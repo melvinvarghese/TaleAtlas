@@ -13,8 +13,19 @@
     if (actual !== expected) throw new Error(`${message} (expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)})`);
   };
   const cardCount = () => document.querySelectorAll('#story-grid .story-card').length;
+  const search = document.getElementById('search');
+  const region = document.getElementById('region-filter');
+  const setSearch = (value) => {
+    search.value = value;
+    search.dispatchEvent(new Event('input', { bubbles: true }));
+  };
+  const setRegion = (value) => {
+    region.value = value;
+    region.dispatchEvent(new Event('change', { bubbles: true }));
+  };
+  const hasNoHorizontalOverflow = () => document.documentElement.scrollWidth <= document.documentElement.clientWidth;
 
-  check('initial library renders all 12 stories', () => equal(cardCount(), 12, 'card count'));
+  check('production page renders all 12 stories', () => equal(cardCount(), 12, 'card count'));
   check('four curated story illustrations are local, lazy-loaded, described, and credited', () => {
     const figures = [...document.querySelectorAll('#story-grid .story-art')];
     equal(figures.length, 4, 'illustrated story count');
@@ -26,26 +37,32 @@
       if (!figure.querySelector('figcaption a[href^="https://"]')) throw new Error('image source credit is missing');
     }
   });
+  check('the production homepage fits the narrow viewport without horizontal scrolling', () => {
+    if (window.innerWidth > 700) throw new Error(`expected responsive viewport, got ${window.innerWidth}px`);
+    if (!hasNoHorizontalOverflow()) throw new Error(`page is ${document.documentElement.scrollWidth}px wide at ${document.documentElement.clientWidth}px`);
+  });
 
-  document.getElementById('region-filter').value = 'Asia';
-  document.getElementById('region-filter').dispatchEvent(new Event('change', { bubbles: true }));
+  setRegion('Asia');
   check('region filter reports the four matching Asian stories', () => {
     equal(cardCount(), 4, 'filtered card count');
     equal(document.getElementById('story-count').textContent, '4 of 12 stories', 'visible story count');
   });
 
-  document.getElementById('region-filter').value = 'all';
-  document.getElementById('region-filter').dispatchEvent(new Event('change', { bubbles: true }));
-  const search = document.getElementById('search');
-  search.value = 'Anansi';
-  search.dispatchEvent(new Event('input', { bubbles: true }));
+  setSearch('Momotaro');
+  check('search and region filters combine without dropping either constraint', () => {
+    equal(cardCount(), 1, 'combined filter count');
+    equal(document.querySelector('#story-grid h3')?.textContent, 'Momotaro, the Peach Boy', 'combined filter result');
+  });
+
+  setSearch('');
+  setRegion('all');
+  setSearch('Anansi');
   check('search narrows the library and announces its result count', () => {
     equal(cardCount(), 1, 'search card count');
     equal(document.getElementById('story-count').textContent, '1 of 12 stories', 'search count');
   });
 
-  search.value = 'no such folktale';
-  search.dispatchEvent(new Event('input', { bubbles: true }));
+  setSearch('no such folktale');
   check('an empty search gives a clear empty state', () => {
     equal(cardCount(), 0, 'empty search card count');
     if (!document.getElementById('story-grid').textContent.includes('No stories found')) {
@@ -57,8 +74,17 @@
   contentsButton.focus();
   contentsButton.click();
   check('opening the reader moves focus to its heading', () => equal(document.activeElement.id, 'reader-title', 'focused element'));
-  document.getElementById('next').click();
-  check('reader opens at the first story', () => equal(document.getElementById('reader-title').textContent, 'The Lion and the Mouse', 'reader title'));
+
+  const firstContentsEntry = document.querySelector('#right-page [data-story="0"]');
+  firstContentsEntry.focus();
+  firstContentsEntry.click();
+  check('selecting a contents entry opens the story and focuses its heading', () => {
+    equal(document.getElementById('reader-title').textContent, 'The Lion and the Mouse', 'reader title');
+    equal(document.activeElement.id, 'reader-title', 'focused element after selecting a story');
+  });
+  check('the open book fits a narrow viewport without horizontal scrolling', () => {
+    if (!hasNoHorizontalOverflow()) throw new Error(`reader is ${document.documentElement.scrollWidth}px wide at ${document.documentElement.clientWidth}px`);
+  });
 
   search.focus();
   search.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
@@ -78,7 +104,12 @@
     equal(document.activeElement.id, 'contents-top', 'restored focus target');
   });
 
-  const result = document.getElementById('test-result');
+  let result = document.getElementById('test-result');
+  if (!result) {
+    result = document.createElement('pre');
+    result.id = 'test-result';
+    document.body.appendChild(result);
+  }
   result.dataset.status = failures.length ? 'failed' : 'passed';
   result.textContent = failures.length ? `${passed} passed; ${failures.length} failed\n${failures.join('\n')}` : `${passed} passed; 0 failed`;
 })();

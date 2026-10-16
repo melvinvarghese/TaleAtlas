@@ -160,6 +160,7 @@
     current = index;
     render(true);
     scrollTo($('reader'));
+    $('reader-title').focus({ preventScroll: true });
   }
 
   function nextPage() {
