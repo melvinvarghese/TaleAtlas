@@ -1,31 +1,41 @@
-# TaleAtlas — The World Folktale Book
+# TaleAtlas: World Folktales for Kids
 
-A free static folktale library designed to feel like opening a classic illustrated storybook. Built with HTML, CSS, and JavaScript for GitHub Pages. No database, paid API, or build step is required.
+TaleAtlas is a free, growing collection of child-friendly world folktales, presented as an illustrated storybook. Read 12 traditional tales retold in fresh wording, explore by title, place, theme, or region, and follow each story in a two-page reader.
 
-## Included
-- Illustrated-style cover and opening page
-- Two-page reading spreads with page-turn animation
-- Contents page, story cards, search, and region filters
-- Responsive design for phones and computers
-- 12 child-friendly retellings of traditional tales
+[Visit TaleAtlas](https://melvinvarghese.github.io/TaleAtlas/)
 
-## Publish on GitHub Pages
-1. Create a new **public** GitHub repository, for example `taleatlas`.
-2. Download and unzip this project.
-3. Upload the **files inside** the `taleatlas` folder to the top level of the repository. `index.html` should be visible on the repository's main page. Do not upload only the ZIP.
-4. Open **Settings → Pages**.
-5. Under Build and deployment, choose **Deploy from a branch**.
-6. Choose branch `main` and folder `/ (root)`, then save.
-7. Wait a minute or two and open the Pages URL GitHub shows you.
+## Features
+
+- An illustrated storybook cover and two-page reading spreads with page-turn animation.
+- 12 child-friendly retellings of traditional tales from different regions.
+- A contents page and story cards, with search and region filters for Africa, Asia, Europe, and Ancient Greece.
+- Reader controls for previous and next stories, plus left and right arrow-key navigation.
+- A responsive layout for phones and computers.
+
+## Run locally
+
+Clone or download the repository, then open `index.html` in a browser. The site is built with HTML, CSS, and JavaScript; it needs no package installation, build step, or database. Google Fonts are optional, with fallback fonts available.
+
+## Publish with GitHub Pages
+
+1. Keep `index.html`, `styles.css`, `script.js`, `stories.js`, and the asset files at the repository root.
+2. Push the files to the `main` branch of your GitHub repository.
+3. In the repository, open **Settings → Pages**.
+4. Under **Build and deployment**, choose **Deploy from a branch**, then select `main` and `/(root)`. Save your settings.
+5. After deployment, open the Pages URL shown in GitHub.
+
+## Project files
+
+- `index.html` — page content and structure.
+- `styles.css` — visual styling and responsive layout.
+- `stories.js` — story text and details.
+- `script.js` — story cards, search, filters, and reader controls.
+- `cover.svg` and `favicon.svg` — site artwork and icon.
 
 ## Add a story
-Open `stories.js`, then add another object inside the array. Copy the format of an existing entry. Required fields: `id`, `title`, `region`, `country`, `theme`, `readingTime`, `summary`, `moral`, `leftPage`, and `rightPage`. Use a unique `id` and write retellings in your own wording. The cards and contents list update automatically. If you introduce a new region filter, also update the options in `index.html` and region matching in `script.js`.
 
-## Grow the collection responsibly
-1. Add stories in manageable batches, and keep a record of source and provenance.
-2. Record alternate names and regional variants instead of presenting one version as definitive.
-3. Prefer public-domain source texts or fresh retellings. Modern translations, retellings, and illustrations may be copyrighted.
-4. Ask knowledgeable readers to review cultural context, age suitability, and wording.
-5. As the collection grows, add tags for country/tradition, theme, age range, and reading time.
+In `stories.js`, add an object to the story array, following an existing entry. Each story needs a unique `id` and the fields `title`, `region`, `country`, `theme`, `readingTime`, `summary`, `moral`, `leftPage`, and `rightPage`. If you add a region filter, also update the options in `index.html` and the matching logic in `script.js`.
 
-This is a starter collection, not yet the world's largest. Folktales vary by community and source; the cultural notes here should be researched and improved as the library expands. Google Fonts is optional; fallback fonts work if it is unavailable.
+## Cultural and copyright note
+
+This is a starter collection. Folktales have many versions, and details can vary by community and source. Keep a record of each story's source and provenance, and ask knowledgeable readers to review cultural context and age suitability. Use public-domain source texts or write fresh retellings; modern translations and illustrations may be copyrighted.
