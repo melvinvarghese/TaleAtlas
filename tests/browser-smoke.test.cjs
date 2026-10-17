@@ -49,7 +49,7 @@ test('the production TaleAtlas page supports search, filters, reader, and keyboa
     const match = result.stdout.match(/<pre id="test-result" data-status="(passed|failed)">([\s\S]*?)<\/pre>/);
     assert.ok(match, `Chromium did not return the test result. Output: ${result.stdout.slice(-1200)}`);
     assert.equal(match[1], 'passed', match[2].replace(/&#10;/g, '\n'));
-    assert.match(match[2], /15 passed; 0 failed/);
+    assert.match(match[2], /24 passed; 0 failed/);
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }

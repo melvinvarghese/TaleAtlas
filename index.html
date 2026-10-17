@@ -80,7 +80,7 @@
       <div class="section-heading">
         <div>
           <p class="section-label">The collection</p>
-          <h2 id="collection-title">Stories from every corner</h2>
+          <h2 id="collection-title" tabindex="-1">Stories from every corner</h2>
         </div>
         <span id="story-count" class="story-count" role="status" aria-live="polite" aria-atomic="true">12 stories</span>
       </div>
@@ -107,6 +107,11 @@
             <option value="Ancient Greece">Ancient Greece</option>
           </select>
         </div>
+      </div>
+
+      <div id="active-filters" class="active-filters" hidden>
+        <p id="active-filter-text"></p>
+        <button id="clear-filters" type="button">Clear filters</button>
       </div>
 
       <div id="story-grid" class="story-grid"></div>

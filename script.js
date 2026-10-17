@@ -52,6 +52,7 @@
   let current = -1;
   let returnFocus = null;
   let turnTimer;
+  let metadataFilters = { region: '', country: '', theme: '' };
 
   function scrollTo(element) {
     element.scrollIntoView({
@@ -120,13 +121,29 @@
 
   function renderStory() {
     const story = stories[current];
+    const country = countryName(story.country);
+    const countryDetails = story.country.slice(country.length);
     $('reader-title').textContent = story.title;
     $('left-page').innerHTML = `
-      <div class="page-label">${esc(story.region)} · ${esc(story.theme)}</div>
+      <div class="page-label reader-metadata">
+        <button class="reader-metadata-filter" type="button" data-filter="region" data-value="${esc(story.region)}" aria-label="Filter by region: ${esc(story.region)}" aria-pressed="${metadataFilters.region === story.region}">${esc(story.region)}</button>
+        <span aria-hidden="true">·</span>
+        <button class="reader-metadata-filter" type="button" data-filter="theme" data-value="${esc(story.theme)}" aria-label="Filter by theme: ${esc(story.theme)}" aria-pressed="${metadataFilters.theme === story.theme}">${esc(story.theme)}</button>
+      </div>
       <h2 class="page-title">${esc(story.title)}</h2>
-      <p class="page-meta">${esc(story.country)} · ${esc(story.readingTime)} read</p>
+      <p class="page-meta"><button class="reader-metadata-filter" type="button" data-filter="country" data-value="${esc(country)}" aria-label="Filter by country: ${esc(country)}" aria-pressed="${metadataFilters.country === country}">${esc(country)}</button>${esc(countryDetails)} · ${esc(story.readingTime)} read</p>
       <div class="page-text"><p>${esc(story.leftPage)}</p></div>
       <span class="folio">${String(current * 2 + 1).padStart(2, '0')}</span>`;
+
+    $('left-page').querySelectorAll('[data-filter]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const { filter, value } = button.dataset;
+        closeReader({ restoreFocus: false });
+        updateMetadataFilter(filter, value);
+        scrollTo($('collection-title'));
+        $('collection-title').focus({ preventScroll: true });
+      });
+    });
 
     $('right-page').innerHTML = `
       <div class="page-label">The tale continues</div>
@@ -184,30 +201,56 @@
     return region === 'Ancient Greece' && /ancient greece/i.test(story.region);
   }
 
+  function countryName(country) {
+    return country.split(';', 1)[0].trim();
+  }
+
+  function updateMetadataFilter(type, value) {
+    metadataFilters[type] = value;
+    renderCards();
+  }
+
   function renderCards() {
     const query = $('search').value.trim().toLowerCase();
     const region = $('region-filter').value;
     const filtered = stories.map((story, index) => ({ ...story, index })).filter((story) => {
       const searchable = `${story.title} ${story.region} ${story.country} ${story.theme} ${story.summary}`.toLowerCase();
-      return searchable.includes(query) && matchesRegion(story, region);
+      return searchable.includes(query)
+        && matchesRegion(story, region)
+        && Object.entries(metadataFilters).every(([type, value]) => {
+          if (!value) return true;
+          return (type === 'country' ? countryName(story.country) : story[type]) === value;
+        });
     });
 
-    const activeFilters = query.length > 0 || region !== 'all';
+    const activeFilterLabels = [];
+    if (query) activeFilterLabels.push(`Search: “${$('search').value.trim()}”`);
+    if (region !== 'all') activeFilterLabels.push(`Browse by region: ${region}`);
+    Object.entries(metadataFilters).forEach(([type, value]) => {
+      if (value) activeFilterLabels.push(`${type[0].toUpperCase()}${type.slice(1)}: ${value}`);
+    });
+    const activeFilters = activeFilterLabels.length > 0;
     $('story-count').textContent = activeFilters
       ? `${filtered.length} of ${stories.length} stories`
       : `${stories.length} stories`;
+    $('active-filters').hidden = !activeFilters;
+    $('active-filter-text').textContent = activeFilters ? `Filtered by ${activeFilterLabels.join(' · ')}.` : '';
 
     $('story-grid').innerHTML = filtered.length
       ? filtered.map((story) => {
         const image = artwork[story.id];
+        const country = countryName(story.country);
         return `<article class="story-card${image ? ' story-card--illustrated' : ''}">
           ${artworkMarkup(story, 'story-art')}
           <div class="story-copy">
-            <p class="story-region">${esc(story.region)}</p>
+            <div class="story-tags">
+              <button class="story-region metadata-filter" type="button" data-filter="region" data-value="${esc(story.region)}" aria-label="Filter by region: ${esc(story.region)}" aria-pressed="${metadataFilters.region === story.region}">${esc(story.region)}</button>
+              <button class="story-country metadata-filter" type="button" data-filter="country" data-value="${esc(country)}" aria-label="Filter by country: ${esc(country)}" aria-pressed="${metadataFilters.country === country}">${esc(country)}</button>
+            </div>
             <h3 id="story-title-${story.index}">${esc(story.title)}</h3>
             <p class="story-summary">${esc(story.summary)}</p>
             <div class="card-bottom">
-              <span class="theme-label">${esc(story.theme)}</span>
+              <button class="metadata-filter metadata-filter--theme" type="button" data-filter="theme" data-value="${esc(story.theme)}" aria-label="Filter by theme: ${esc(story.theme)}" aria-pressed="${metadataFilters.theme === story.theme}">${esc(story.theme)}</button>
               <button class="read-link" type="button" data-read="${story.index}" aria-labelledby="read-label-${story.index} story-title-${story.index}"><span id="read-label-${story.index}">Read story</span></button>
             </div>
           </div>
@@ -217,6 +260,15 @@
 
     $('story-grid').querySelectorAll('[data-read]').forEach((button) => {
       button.addEventListener('click', () => openReader(Number(button.dataset.read)));
+    });
+    $('story-grid').querySelectorAll('[data-filter]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const { filter, value } = button.dataset;
+        updateMetadataFilter(filter, metadataFilters[filter] === value ? '' : value);
+        const focusTarget = [...$('story-grid').querySelectorAll('[data-filter]')]
+          .find((candidate) => candidate.dataset.filter === filter && candidate.dataset.value === value);
+        focusTarget?.focus();
+      });
     });
   }
 
@@ -240,6 +292,13 @@
   $('next').addEventListener('click', nextPage);
   $('search').addEventListener('input', renderCards);
   $('region-filter').addEventListener('change', renderCards);
+  $('clear-filters').addEventListener('click', () => {
+    $('search').value = '';
+    $('region-filter').value = 'all';
+    metadataFilters = { region: '', country: '', theme: '' };
+    renderCards();
+    $('search').focus();
+  });
 
   document.addEventListener('keydown', (event) => {
     if ($('reader').classList.contains('hidden') || $('about-dialog').open) return;
