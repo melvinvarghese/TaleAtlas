@@ -12,40 +12,40 @@
 
   const artwork = {
     'lion-mouse': {
-      src: 'assets/lion-and-mouse.webp',
-      alt: 'A nineteenth-century engraving of a lion and small mouse in the grass.',
-      credit: 'Harrison Weir · c. 1867',
-      source: 'https://commons.wikimedia.org/wiki/File:Page_31_illustration_to_Three_hundred_Aesop%27s_fables_(Townshend).png',
-      sourceName: 'Wikimedia Commons',
-      width: 600,
-      height: 497
+      alt: 'A small mouse gnaws through the rope net holding a tawny lion in a sunlit forest clearing.'
+    },
+    'monkey-crocodile': {
+      alt: 'A clever monkey sits safely in a fruit tree above a crocodile waiting at the riverbank.'
     },
     momotaro: {
-      src: 'assets/momotaro.webp',
-      alt: 'Japanese woodblock illustration of a baby inside a peach as an elderly couple look on.',
-      credit: 'Momotaro, or, Little Peachling · 1889',
-      source: 'https://pdimagearchive.org/images/1be95dee-d8d9-439f-b87a-7023573c9693',
-      sourceName: 'Public Domain Image Archive / The Metropolitan Museum',
-      width: 541,
-      height: 600
+      alt: 'An elderly Japanese couple discover a cheerful baby nestled inside a giant peach beside a stream.'
+    },
+    'anansi-wisdom': {
+      alt: 'Anansi, a small eight-legged spider, climbs a tree with a round clay pot tied in front.'
     },
     'tortoise-hare': {
-      src: 'assets/tortoise-and-hare.webp',
-      alt: 'Arthur Rackham’s color illustration of a tortoise and hare among other fable animals.',
-      credit: 'Arthur Rackham · 1912',
-      source: 'https://commons.wikimedia.org/wiki/File:Tortoise_and_hare_rackham.jpg',
-      sourceName: 'Wikimedia Commons',
-      width: 462,
-      height: 600
+      alt: 'A steady tortoise nears a woodland finish line while a hare naps beneath a tree.'
+    },
+    'stone-soup': {
+      alt: 'Travellers and villagers gather around a steaming pot as vegetables are added to make soup.'
+    },
+    'bremen-musicians': {
+      alt: 'A donkey, dog, cat, and rooster stand together outside a quiet woodland cottage at night.'
     },
     'boy-wolf': {
-      src: 'assets/boy-who-cried-wolf.webp',
-      alt: 'A seventeenth-century engraving of a shepherd boy and wolf on a hillside among sheep.',
-      credit: 'Francis Barlow · 1687',
-      source: 'https://commons.wikimedia.org/wiki/File:Boycriedwolfbarlow.jpg',
-      sourceName: 'Wikimedia Commons',
-      width: 600,
-      height: 487
+      alt: 'A young shepherd watches his flock on a green hillside as a wolf approaches in the distance.'
+    },
+    'porridge-pot': {
+      alt: 'A small enchanted pot overflows with golden porridge from a cottage doorway into the village street.'
+    },
+    'fisherman-wife': {
+      alt: 'A fisherman releases a shimmering fish into a blue-grey sea near a humble cottage.'
+    },
+    'clever-rabbit': {
+      alt: 'A small rabbit leads a roaring lion toward a deep stone well in a leafy forest.'
+    },
+    'grateful-crane': {
+      alt: 'A red-crowned white crane works at a wooden loom in a quiet snowy cottage.'
     }
   };
 
@@ -86,8 +86,7 @@
     const image = artwork[story.id];
     if (!image) return '';
     return `<figure class="${className}">
-      <img src="${esc(image.src)}" alt="${esc(image.alt)}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async">
-      <figcaption><span>${esc(image.credit)}</span><a href="${esc(image.source)}">Source &amp; rights · ${esc(image.sourceName)}</a></figcaption>
+      <img src="assets/${esc(story.id)}.webp" alt="${esc(image.alt)}" width="1600" height="1067" loading="lazy" decoding="async">
     </figure>`;
   }
 

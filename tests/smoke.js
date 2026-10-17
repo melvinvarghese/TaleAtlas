@@ -26,15 +26,31 @@
   const hasNoHorizontalOverflow = () => document.documentElement.scrollWidth <= document.documentElement.clientWidth;
 
   check('production page renders all 12 stories', () => equal(cardCount(), 12, 'card count'));
-  check('four curated story illustrations are local, lazy-loaded, described, and credited', () => {
-    const figures = [...document.querySelectorAll('#story-grid .story-art')];
-    equal(figures.length, 4, 'illustrated story count');
-    for (const figure of figures) {
-      const image = figure.querySelector('img');
-      if (!image?.getAttribute('alt')?.trim()) throw new Error('image is missing descriptive alt text');
-      if (image.loading !== 'lazy') throw new Error('image is not lazy-loaded');
-      if (!image.getAttribute('src').startsWith('assets/')) throw new Error('image is not served locally');
-      if (!figure.querySelector('figcaption a[href^="https://"]')) throw new Error('image source credit is missing');
+  check('artwork captions and notes links are absent from the page', () => {
+    if (document.querySelector('.story-art figcaption, .page-artwork figcaption, .footer-source-link')) {
+      throw new Error('visible artwork captions or notes links remain');
+    }
+  });
+  check('all 12 story illustrations are local, described, and reused in the reader', () => {
+    const cards = [...document.querySelectorAll('#story-grid .story-card')];
+    equal(cards.length, 12, 'story card count');
+    for (const [index, card] of cards.entries()) {
+      const image = card.querySelector('.story-art img');
+      if (!image?.getAttribute('alt')?.trim()) throw new Error(`card ${index} is missing descriptive alt text`);
+      if (image.loading !== 'lazy') throw new Error(`card ${index} image is not lazy-loaded`);
+      if (!image.getAttribute('src').startsWith('assets/')) throw new Error(`card ${index} image is not served locally`);
+      if (card.querySelector('.story-art figcaption, .story-art a')) throw new Error(`card ${index} has a visible artwork caption or notes link`);
+
+      card.querySelector('[data-read]').click();
+      const readerImage = document.querySelector('#right-page .page-artwork img');
+      if (!readerImage) throw new Error(`story ${index} is missing reader artwork`);
+      equal(readerImage.getAttribute('src'), image.getAttribute('src'), `reader image source for story ${index}`);
+      equal(readerImage.getAttribute('alt'), image.getAttribute('alt'), `reader image alt text for story ${index}`);
+      readerImage.scrollIntoView({ block: 'center' });
+      const readerImageHeight = readerImage.getBoundingClientRect().height;
+      if (readerImageHeight < 80) throw new Error(`reader image for story ${index} is only ${readerImageHeight}px tall`);
+      if (readerImage.closest('figure')?.querySelector('figcaption, a')) throw new Error(`reader story ${index} has a visible artwork caption or notes link`);
+      document.getElementById('close-book').click();
     }
   });
   check('the production homepage fits the narrow viewport without horizontal scrolling', () => {

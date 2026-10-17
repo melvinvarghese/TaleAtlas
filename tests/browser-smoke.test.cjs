@@ -4,9 +4,24 @@ const os = require('node:os');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 const { spawnSync } = require('node:child_process');
+const vm = require('node:vm');
 const { test } = require('node:test');
-
 const root = path.resolve(__dirname, '..');
+
+test('every story has a locally stored illustration file', () => {
+  const context = { window: {} };
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'stories.js'), 'utf8'), context);
+  const stories = context.window.TALEATLAS_STORIES;
+  assert.equal(stories.length, 12);
+  for (const story of stories) {
+    const imagePath = path.join(root, 'assets', `${story.id}.webp`);
+    assert.ok(fs.existsSync(imagePath), `${story.id} is missing ${imagePath}`);
+  }
+});
+
+test('the standalone artwork-notes file is absent', () => {
+  assert.equal(fs.existsSync(path.join(root, 'ASSET-CREDITS.md')), false);
+});
 
 test('the production TaleAtlas page supports search, filters, reader, and keyboard access in Chromium', () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'taleatlas-browser-'));
@@ -34,7 +49,7 @@ test('the production TaleAtlas page supports search, filters, reader, and keyboa
     const match = result.stdout.match(/<pre id="test-result" data-status="(passed|failed)">([\s\S]*?)<\/pre>/);
     assert.ok(match, `Chromium did not return the test result. Output: ${result.stdout.slice(-1200)}`);
     assert.equal(match[1], 'passed', match[2].replace(/&#10;/g, '\n'));
-    assert.match(match[2], /14 passed; 0 failed/);
+    assert.match(match[2], /15 passed; 0 failed/);
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }
