@@ -30,6 +30,5 @@ Open `stories.js`, then add another object inside the array. Copy the format of 
 
 This is a starter collection, not yet the world's largest. Folktales vary by community and source; the cultural notes here should be researched and improved as the library expands. Google Fonts is optional; fallback fonts work if it is unavailable.
 
-
-## Realistic page-turn animation
-The reader uses the open-source StPageFlip library from jsDelivr. It is loaded from a CDN, so no build tools are needed. An internet connection is needed for the enhanced flip animation.
+## Page-turn animation
+The reader uses a lightweight CSS page-turn animation built into `styles.css`. It does not require an external page-flip library, build tools, or a third-party script.
