@@ -278,7 +278,6 @@
     const featuredIndex = stories.findIndex((story) => story.id === 'anansi-wisdom');
     if (featuredIndex >= 0) openReader(featuredIndex);
   });
-  $('cover-stage').addEventListener('click', () => openReader());
   document.querySelectorAll('#region-index [data-region]').forEach((button) => {
     button.addEventListener('click', () => {
       $('region-filter').value = button.dataset.region;
