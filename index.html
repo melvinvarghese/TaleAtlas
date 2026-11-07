@@ -47,8 +47,8 @@
         <button id="open-book" class="primary" type="button" aria-controls="reader">Explore the collection</button>
         <p class="note"><span id="hero-story-count">112 stories</span> · Traditional tales, thoughtfully retold.</p>
       </div>
-      <div class="hero-art" aria-label="A child reads beneath an old tree while a fox rests nearby">
-        <img src="hero-illustration.svg" width="760" height="700" alt="A child reading beneath a broad old tree, with a fox nearby and a distant storybook castle." fetchpriority="high">
+      <div class="hero-art hero-art--collage" aria-label="Illustrations from the TaleAtlas story collection">
+        <img class="hero-main-art" src="assets/clever-rabbit.webp" width="760" height="700" alt="A clever rabbit leads a lion toward a stone well in a forest." fetchpriority="high"><img class="hero-detail-art" src="assets/grateful-crane.webp" alt="A crane in a quiet snowy cottage" loading="lazy"><span class="hero-art-seal">TALES<br>FROM<br>THE WORLD</span>
         <span class="art-caption">A world of wonder, gathered in one place</span>
       </div>
     </section>
@@ -100,11 +100,11 @@
         <p>Follow a story across continents, landscapes and generations.</p>
       </div>
       <div class="region-index" id="region-index">
-        <button type="button" data-region="Africa"><span class="region-number">01</span><span class="region-name">Africa</span><span class="region-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" data-region="South Asia"><span class="region-number">02</span><span class="region-name">South Asia</span><span class="region-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" data-region="East Asia"><span class="region-number">03</span><span class="region-name">East Asia</span><span class="region-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" data-region="Europe"><span class="region-number">04</span><span class="region-name">Europe</span><span class="region-arrow" aria-hidden="true">↗</span></button>
-        <button type="button" data-region="Ancient Greece"><span class="region-number">05</span><span class="region-name">Ancient Greece</span><span class="region-arrow" aria-hidden="true">↗</span></button>
+        <button type="button" class="region-card" data-region="Africa"><span class="region-card-art"><img src="assets/anansi-wisdom.webp" alt="Anansi and the pot of wisdom" loading="lazy"></span><span class="region-card-meta"><span class="region-number">01</span><span class="region-name">Africa</span><span class="region-arrow" aria-hidden="true">↗</span></span></button>
+        <button type="button" class="region-card" data-region="South Asia"><span class="region-card-art"><img src="assets/monkey-crocodile.webp" alt="The monkey and the crocodile" loading="lazy"></span><span class="region-card-meta"><span class="region-number">02</span><span class="region-name">South Asia</span><span class="region-arrow" aria-hidden="true">↗</span></span></button>
+        <button type="button" class="region-card" data-region="East Asia"><span class="region-card-art"><img src="assets/momotaro.webp" alt="Momotaro, the peach boy" loading="lazy"></span><span class="region-card-meta"><span class="region-number">03</span><span class="region-name">East Asia</span><span class="region-arrow" aria-hidden="true">↗</span></span></button>
+        <button type="button" class="region-card" data-region="Europe"><span class="region-card-art"><img src="assets/bremen-musicians.webp" alt="The Bremen town musicians" loading="lazy"></span><span class="region-card-meta"><span class="region-number">04</span><span class="region-name">Europe</span><span class="region-arrow" aria-hidden="true">↗</span></span></button>
+        <button type="button" class="region-card" data-region="Ancient Greece"><span class="region-card-art"><img src="assets/tortoise-hare.webp" alt="The tortoise and the hare" loading="lazy"></span><span class="region-card-meta"><span class="region-number">05</span><span class="region-name">Ancient Greece</span><span class="region-arrow" aria-hidden="true">↗</span></span></button>
       </div>
     </section>
 
