@@ -66,6 +66,24 @@
 
   randomizeHeroArtwork();
 
+  // Choose a random illustrated tale for the homepage hero.
+  // sessionStorage prevents the same image appearing on consecutive refreshes in this tab.
+  function rotateHeroArtwork() {
+    const hero = document.querySelector('.hero-main-art');
+    if (!hero) return;
+    const illustrated = stories.filter((story) => artwork[story.id]);
+    if (!illustrated.length) return;
+    let previous = '';
+    try { previous = sessionStorage.getItem('taleatlas-last-hero') || ''; } catch (_) {}
+    const choices = illustrated.length > 1
+      ? illustrated.filter((story) => story.id !== previous)
+      : illustrated;
+    const selected = choices[Math.floor(Math.random() * choices.length)];
+    hero.src = `assets/${selected.id}.webp`;
+    hero.alt = artwork[selected.id].alt;
+    try { sessionStorage.setItem('taleatlas-last-hero', selected.id); } catch (_) {}
+  }
+
   let current = -1;
   let returnFocus = null;
   let turnTimer;
@@ -350,5 +368,6 @@
     }
   });
 
+  rotateHeroArtwork();
   renderCards();
 })();
