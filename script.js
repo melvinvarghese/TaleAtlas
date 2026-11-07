@@ -314,9 +314,23 @@
   }
 
   $('open-book').addEventListener('click', () => openReader());
+  let dailyStoryIndex = -1;
+  function setStoryOfTheDay() {
+    const illustratedStories = stories.map((story, index) => ({ story, index })).filter(({ story }) => artwork[story.id]);
+    if (!illustratedStories.length) return;
+    const now = new Date();
+    const dayNumber = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000);
+    const chosen = illustratedStories[((dayNumber % illustratedStories.length) + illustratedStories.length) % illustratedStories.length];
+    dailyStoryIndex = chosen.index;
+    const story = chosen.story;
+    const image = document.querySelector('.featured-art img');
+    if (image) { image.src = 'assets/' + story.id + '.webp'; image.alt = artwork[story.id].alt; }
+    $('featured-origin').textContent = 'FROM ' + story.country.toUpperCase() + ' · ' + story.region.toUpperCase();
+    $('featured-title').textContent = story.title;
+    $('featured-summary').textContent = story.summary;
+  }
   $('read-featured')?.addEventListener('click', () => {
-    const featuredIndex = stories.findIndex((story) => story.id === 'anansi-wisdom');
-    if (featuredIndex >= 0) openReader(featuredIndex);
+    if (dailyStoryIndex >= 0) openReader(dailyStoryIndex);
   });
   document.querySelectorAll('#region-index [data-region]').forEach((button) => {
     button.addEventListener('click', () => {
@@ -369,5 +383,6 @@
   });
 
   rotateHeroArtwork();
+  setStoryOfTheDay();
   renderCards();
 })();
