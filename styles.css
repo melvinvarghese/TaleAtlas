@@ -1356,7 +1356,6 @@ body { background:var(--canvas); color:var(--ink); }
 }
 
 /* TaleAtlas — art-directed storybook edition */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap');
 :root{
  --canvas:#f5e9d1;--paper:#fbf2df;--paper-deep:#efe0c2;--sage:#e9ddc5;
  --forest:#18382d;--forest-deep:#102a22;--ink:#211f19;--muted:#554c3e;--quiet:#766b59;
@@ -1493,3 +1492,7 @@ button,input,select{font-family:inherit}
  .about-panel{padding:3rem 1rem}
 }
 @media(prefers-reduced-motion:reduce){.region-card{transition:none}.region-card:hover{transform:none}}
+
+.region-card-meta{grid-template-columns:1fr;grid-template-rows:auto auto;justify-items:center;gap:0;padding:.05rem .4rem .35rem}
+.region-name{grid-column:1;grid-row:1}
+.region-count{grid-column:1;grid-row:2;color:#65543e;font: .9rem 'Crimson Pro',Georgia,serif}
