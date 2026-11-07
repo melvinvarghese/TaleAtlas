@@ -145,7 +145,7 @@
     $('prev').disabled = contentsPage === 0;
     $('prev').textContent = 'Previous';
     $('next').disabled = !stories.length;
-    $('next').textContent = contentsEnd < stories.length ? 'Next 20 stories' : 'Begin reading';
+    $('next').textContent = contentsEnd < stories.length ? 'Next' : 'Begin reading';
   }
 
   function renderStory() {
