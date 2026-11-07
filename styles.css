@@ -1096,3 +1096,122 @@ dialog::backdrop {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* TaleAtlas editorial redesign */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+:root {
+  --forest:#293b2e; --forest-deep:#1f3025; --ink:#302f28; --muted:#716b5e;
+  --quiet:#817a6d; --canvas:#f5f0e5; --sage:#e9e4d7; --sage-strong:#d9d0bd;
+  --paper:#fffdf7; --gold:#a45e3d; --rule:#d8cdb9; --art-ground:#eee5d4; --focus:#a45e3d;
+}
+body { background:var(--canvas); color:var(--ink); }
+.topbar { min-height:84px; max-width:1440px; margin:auto; padding:0 clamp(1.25rem,6vw,6rem); border-bottom:1px solid var(--rule); background:var(--canvas); }
+.brand { font-size:1.55rem; letter-spacing:-.04em; }
+.brand svg { display:none; }
+.brand::before { content:"✳"; color:var(--gold); font:1rem Georgia,serif; margin-right:.2rem; }
+.topbar nav { gap:clamp(.7rem,2.4vw,2rem); }
+.topbar nav a,.topbar nav button { color:var(--forest); text-decoration:none; font-size:.9rem; font-weight:600; letter-spacing:.015em; }
+.topbar nav a:hover,.topbar nav button:hover { color:var(--gold); text-decoration:underline; text-underline-offset:.35em; }
+.topbar nav .nav-search { border:1px solid var(--rule); padding:.55rem .9rem; min-height:40px; }
+.welcome { position:relative; overflow:hidden; min-height:610px; max-width:1440px; margin:auto; padding:clamp(4rem,8vw,7.2rem) clamp(1.5rem,8vw,7.5rem); grid-template-columns:minmax(0,1fr) minmax(18rem,.9fr); gap:clamp(2rem,6vw,6rem); background:var(--canvas); }
+.welcome::before { content:""; position:absolute; width:480px; height:480px; border:1px solid #d9cbb4; border-radius:50%; right:8%; top:8%; opacity:.55; pointer-events:none; }
+.welcome::after { content:""; position:absolute; width:390px; height:390px; border:1px solid #d9cbb4; border-radius:50%; right:11%; top:13%; opacity:.45; pointer-events:none; }
+.welcome-copy { position:relative; z-index:1; max-width:620px; }
+.hero-label,.section-label,.reader-label { color:var(--gold); font-size:.72rem; letter-spacing:.17em; font-weight:700; }
+.ornament { display:inline-block; margin-right:.55rem; font-size:.9rem; }
+.welcome h1 { max-width:12ch; margin:1.35rem 0 1.45rem; font-size:clamp(3.25rem,6.4vw,6.2rem); line-height:.99; letter-spacing:-.055em; }
+.welcome h1 span,.welcome h1 em { display:block; }
+.welcome h1 em { color:var(--gold); font-style:italic; }
+.intro { max-width:43ch; color:#655f54; font-size:1.08rem; line-height:1.85; }
+.primary { min-height:50px; padding:.9rem 1.4rem; background:var(--forest); border-radius:2px; letter-spacing:.02em; font-size:.9rem; }
+.primary:hover { background:var(--gold); }
+.note { margin-top:1.2rem; color:var(--quiet); font-size:.8rem; letter-spacing:.025em; }
+.cover-stage { position:relative; z-index:1; min-height:430px; }
+.cover-stage img { width:min(100%,390px); filter:drop-shadow(12px 18px 15px rgb(60 45 28 / 18%)); transform:rotate(1deg); }
+.cover-hint { font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+.regions-section { max-width:1440px; margin:auto; padding:4.8rem clamp(1.5rem,8vw,7.5rem) 5rem; background:#eee8da; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+.regions-heading { text-align:center; margin:0 auto 2.6rem; }
+.regions-heading h2 { margin:.55rem 0 .45rem; color:var(--forest); font:500 clamp(2rem,3.5vw,3rem)/1.12 'Playfair Display',Georgia,serif; letter-spacing:-.04em; }
+.regions-heading p:last-child { margin:0; color:var(--muted); font-size:.92rem; }
+.region-index { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); border-top:1px solid #cfc2ad; border-bottom:1px solid #cfc2ad; }
+.region-index button { min-height:120px; padding:1.1rem .9rem; border:0; border-right:1px solid #cfc2ad; background:transparent; display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between; text-align:left; transition:background .2s ease; }
+.region-index button:last-child { border-right:0; }
+.region-index button:hover,.region-index button:focus-visible { background:#e3dac9; }
+.region-number { color:var(--gold); font-size:.68rem; letter-spacing:.12em; }
+.region-name { color:var(--forest); font:500 clamp(1rem,1.7vw,1.4rem)/1.2 'Playfair Display',Georgia,serif; }
+.region-arrow { align-self:flex-end; color:var(--gold); font-size:1.1rem; }
+.collection { max-width:1440px; padding:6rem clamp(1.5rem,8vw,7.5rem) 6rem; }
+.section-heading h2,.about-panel h2 { font-size:clamp(2.3rem,4vw,3.6rem); letter-spacing:-.045em; }
+.story-count { padding:.35rem 0; background:transparent; color:var(--gold); font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; }
+.section-intro { max-width:55ch; margin:1rem 0 2.2rem; color:var(--muted); }
+.filters { grid-template-columns:minmax(0,1fr) minmax(220px,.36fr); gap:1.2rem; margin-bottom:2.6rem; }
+.filter-field label { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.search-control,.region-field select { min-height:54px; border:1px solid #d5c9b5; background:var(--paper); border-radius:0; }
+.search-control input { min-height:52px; }
+.story-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2.2rem 1.6rem; }
+.story-card { min-width:0; padding:0 0 1.25rem; border:0; border-bottom:1px solid var(--rule); background:transparent; box-shadow:none; display:flex; flex-direction:column; }
+.story-art { height:220px; margin:0 0 1.1rem; overflow:hidden; background:#e8dfce; }
+.story-art img { width:100%; height:100%; max-height:none; object-fit:cover; transition:transform .5s ease; }
+.story-card:hover .story-art img { transform:scale(1.035); }
+.story-card:not(.story-card--illustrated)::before { content:"TALEATLAS  /  A STORY FROM THE COLLECTION"; min-height:220px; padding:1.5rem; margin-bottom:1.1rem; display:flex; align-items:center; justify-content:center; text-align:center; color:#8b6b4c; background:linear-gradient(135deg,#e8dfce,#eee7d9); font:italic 1rem 'Playfair Display',Georgia,serif; letter-spacing:.07em; }
+.story-copy { padding:0 .1rem; display:flex; flex:1; flex-direction:column; }
+.story-tags { gap:.25rem .8rem; }
+.story-region,.story-country,.metadata-filter--theme { padding:0; color:var(--gold); font-size:.68rem; letter-spacing:.09em; text-transform:uppercase; }
+.story-copy h3 { margin:.7rem 0 .5rem; color:var(--forest); font:500 1.55rem/1.16 'Playfair Display',Georgia,serif; letter-spacing:-.025em; }
+.story-summary { color:#6b655a; font-size:.88rem; line-height:1.7; }
+.card-bottom { margin-top:auto; padding-top:1rem; border-top:1px solid #e0d7c8; }
+.read-link { color:var(--forest); font-size:.82rem; font-weight:700; letter-spacing:.03em; }
+.read-link::after { color:var(--gold); }
+.about-panel { max-width:1440px; margin:auto; padding:5.5rem clamp(1.5rem,8vw,7.5rem); background:#e9e2d4; border-top:1px solid var(--rule); }
+.about-copy { max-width:760px; margin:auto; text-align:center; }
+.about-panel h2 { margin:.55rem 0 1rem; }
+.about-panel p:last-child { max-width:68ch; margin:0 auto; color:#625c51; line-height:1.85; }
+.site-footer { max-width:1440px; margin:auto; padding:2rem clamp(1.5rem,8vw,7.5rem); border-top:1px solid var(--rule); background:var(--canvas); }
+.footer-brand { color:var(--forest); font:500 1.3rem 'Playfair Display',Georgia,serif; }
+.site-footer p { color:var(--quiet); font-size:.8rem; }
+.reader { max-width:1280px; }
+.book { background:var(--paper); box-shadow:0 18px 38px rgb(54 42 27 / 10%); }
+.paper { background:var(--paper); }
+.page-title { color:var(--forest); }
+.lesson { background:#f0eadf; border-color:var(--gold); }
+#about-dialog { border:1px solid var(--rule); border-radius:0; background:var(--paper); color:var(--ink); box-shadow:0 25px 80px rgb(30 25 18 / 25%); }
+#about-dialog::backdrop { background:rgb(35 39 31 / 55%); }
+@media (max-width:850px) {
+ .welcome { min-height:auto; grid-template-columns:1fr .8fr; gap:1.2rem; padding-top:4rem; padding-bottom:4rem; }
+ .welcome h1 { font-size:clamp(2.8rem,6vw,4.3rem); }
+ .region-index { grid-template-columns:repeat(3,minmax(0,1fr)); }
+ .region-index button:nth-child(3) { border-right:0; }
+ .region-index button:nth-child(n+4) { border-top:1px solid #cfc2ad; }
+ .story-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:600px) {
+ .topbar { min-height:70px; padding:0 1.1rem; }
+ .brand { font-size:1.3rem; }
+ .topbar nav { gap:.25rem; }
+ .topbar nav a,.topbar nav button { padding:.5rem .45rem; font-size:.78rem; }
+ .topbar nav .nav-search { display:none; }
+ .welcome { grid-template-columns:1fr; padding:3.4rem 1.35rem 2.8rem; gap:1.4rem; }
+ .welcome::before { width:290px; height:290px; right:-12%; top:38%; }
+ .welcome::after { width:240px; height:240px; right:-5%; top:42%; }
+ .welcome h1 { max-width:11ch; font-size:clamp(3.2rem,13vw,4.5rem); }
+ .intro { font-size:1rem; }
+ .cover-stage { min-height:0; }
+ .cover-stage img { width:min(70%,260px); }
+ .regions-section { padding:3.5rem 1.3rem; }
+ .region-index { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .region-index button { min-height:95px; border-top:1px solid #cfc2ad; }
+ .region-index button:nth-child(odd) { border-right:1px solid #cfc2ad; }
+ .region-index button:nth-child(even) { border-right:0; }
+ .region-index button:last-child { grid-column:1/-1; border-right:0; }
+ .collection { padding:4rem 1.3rem; }
+ .section-heading { align-items:flex-start; flex-direction:column; gap:.5rem; }
+ .filters { grid-template-columns:1fr; gap:.9rem; }
+ .story-grid { grid-template-columns:1fr; gap:1.8rem; }
+ .story-art,.story-card:not(.story-card--illustrated)::before { height:220px; min-height:220px; }
+ .about-panel { padding:4rem 1.3rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+ .cover-stage img,.story-art img { transition:none; }
+ .story-card:hover .story-art img { transform:none; }
+}
