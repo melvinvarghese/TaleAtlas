@@ -68,6 +68,8 @@
   }
 
   let current = -1;
+  let contentsPage = 0;
+  const contentsPageSize = 20;
   let returnFocus = null;
   let turnTimer;
   let metadataFilters = { region: '', country: '', theme: '' };
@@ -122,21 +124,28 @@
       </div>
       <span class="folio">i</span>`;
 
+    const contentsStart = contentsPage * contentsPageSize;
+    const contentsEnd = Math.min(contentsStart + contentsPageSize, stories.length);
+    const pageStories = stories.slice(contentsStart, contentsEnd);
     $('right-page').innerHTML = `
       <div class="page-label">In this book</div>
       <h2 class="page-title">Contents</h2>
-      <ol class="contents-list">${stories.map((story, index) => `
-        <li><button type="button" data-story="${index}">${esc(story.title)}<small>${esc(story.country)} · ${esc(story.readingTime)}</small></button></li>`).join('')}
+      <ol class="contents-list">${pageStories.map((story, offset) => {
+        const index = contentsStart + offset;
+        return `
+        <li><button type="button" data-story="${index}">${esc(story.title)}<small>${esc(story.country)} · ${esc(story.readingTime)}</small></button></li>`;
+      }).join('')}
       </ol>
       <span class="folio">ii</span>`;
 
     $('right-page').querySelectorAll('[data-story]').forEach((button) => {
       button.addEventListener('click', () => go(Number(button.dataset.story)));
     });
-    $('page-counter').textContent = `${stories.length} stories · Contents`;
-    $('prev').disabled = true;
+    $('page-counter').textContent = `Contents ${contentsStart + 1}–${contentsEnd} of ${stories.length}`;
+    $('prev').disabled = contentsPage === 0;
+    $('prev').textContent = 'Previous';
     $('next').disabled = !stories.length;
-    $('next').textContent = 'Begin reading';
+    $('next').textContent = contentsEnd < stories.length ? 'Next 20 stories' : 'Begin reading';
   }
 
   function renderStory() {
@@ -200,14 +209,16 @@
   }
 
   function nextPage() {
-    if (current < 0) current = 0;
+    if (current < 0 && (contentsPage + 1) * contentsPageSize < stories.length) contentsPage += 1;
+    else if (current < 0) current = 0;
     else if (current >= stories.length - 1) current = -1;
     else current += 1;
     render(true);
   }
 
   function previousPage() {
-    if (current <= 0) current = -1;
+    if (current < 0 && contentsPage > 0) contentsPage -= 1;
+    else if (current <= 0) current = -1;
     else current -= 1;
     render(true);
   }
