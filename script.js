@@ -71,6 +71,8 @@
   let returnFocus = null;
   let turnTimer;
   let metadataFilters = { region: '', country: '', theme: '' };
+  const storiesPerPage = 20;
+  let collectionPage = 1;
 
   function scrollTo(element) {
     element.scrollIntoView({
@@ -222,6 +224,7 @@
 
   function updateMetadataFilter(type, value) {
     metadataFilters[type] = value;
+    collectionPage = 1;
     renderCards();
   }
 
@@ -253,6 +256,10 @@
       if (value) activeFilterLabels.push(`${type[0].toUpperCase()}${type.slice(1)}: ${value}`);
     });
     const activeFilters = activeFilterLabels.length > 0;
+    const pageCount = Math.max(1, Math.ceil(filtered.length / storiesPerPage));
+    collectionPage = Math.min(collectionPage, pageCount);
+    const pageStart = (collectionPage - 1) * storiesPerPage;
+    const visibleStories = filtered.slice(pageStart, pageStart + storiesPerPage);
     $('story-count').textContent = activeFilters
       ? `${filtered.length} of ${stories.length} stories`
       : `${stories.length} stories`;
@@ -261,7 +268,7 @@
     $('active-filter-text').textContent = activeFilters ? `Filtered by ${activeFilterLabels.join(' · ')}.` : '';
 
     $('story-grid').innerHTML = filtered.length
-      ? filtered.map((story) => {
+      ? visibleStories.map((story) => {
         const image = artwork[story.id];
         const country = countryName(story.country);
         return `<article class="story-card${image ? ' story-card--illustrated' : ''}">
@@ -281,6 +288,12 @@
         </article>`;
       }).join('')
       : '<p class="empty" role="status">No stories found. Try a different search or choose another region.</p>';
+
+    const pagination = $('collection-pagination');
+    pagination.hidden = filtered.length <= storiesPerPage;
+    $('collection-page-status').textContent = `Page ${collectionPage} of ${pageCount} · Showing ${pageStart + 1}–${Math.min(pageStart + storiesPerPage, filtered.length)} of ${filtered.length}`;
+    $('collection-prev').disabled = collectionPage === 1;
+    $('collection-next').disabled = collectionPage === pageCount;
 
     $('story-grid').querySelectorAll('[data-read]').forEach((button) => {
       button.addEventListener('click', () => openReader(Number(button.dataset.read)));
@@ -338,12 +351,19 @@
   });
   $('prev').addEventListener('click', previousPage);
   $('next').addEventListener('click', nextPage);
-  $('search').addEventListener('input', renderCards);
-  $('region-filter').addEventListener('change', renderCards);
+  $('search').addEventListener('input', () => { collectionPage = 1; renderCards(); });
+  $('region-filter').addEventListener('change', () => { collectionPage = 1; renderCards(); });
+  $('collection-prev').addEventListener('click', () => {
+    if (collectionPage > 1) { collectionPage -= 1; renderCards(); scrollTo($('collection-title')); }
+  });
+  $('collection-next').addEventListener('click', () => {
+    collectionPage += 1; renderCards(); scrollTo($('collection-title'));
+  });
   $('clear-filters').addEventListener('click', () => {
     $('search').value = '';
     $('region-filter').value = 'all';
     metadataFilters = { region: '', country: '', theme: '' };
+    collectionPage = 1;
     renderCards();
     $('search').focus();
   });
