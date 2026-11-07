@@ -195,10 +195,7 @@
   function matchesRegion(story, region) {
     if (region === 'all') return true;
     const place = `${story.region} ${story.country}`;
-    if (region === 'Asia') return /asia|india|japan/i.test(place);
-    if (region === 'Africa') return /africa|ghana|akan/i.test(place);
-    if (region === 'Europe') return /europe|germany/i.test(place);
-    return region === 'Ancient Greece' && /ancient greece/i.test(story.region);
+    return story.region === region;
   }
 
   function countryName(country) {
@@ -211,6 +208,16 @@
   }
 
   function renderCards() {
+    const total = stories.length;
+    const heroCount = $('hero-story-count');
+    if (heroCount) heroCount.textContent = `${total} stories`;
+    document.querySelectorAll('#region-index [data-region]').forEach((button) => {
+      button.addEventListener('click', () => {
+        $('region-filter').value = button.dataset.region;
+        renderCards();
+        scrollTo($('collection-title'));
+      });
+    });
     const query = $('search').value.trim().toLowerCase();
     const region = $('region-filter').value;
     const filtered = stories.map((story, index) => ({ ...story, index })).filter((story) => {
