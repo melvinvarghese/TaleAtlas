@@ -233,6 +233,7 @@
     $('story-count').textContent = activeFilters
       ? `${filtered.length} of ${stories.length} stories`
       : `${stories.length} stories`;
+    $('hero-story-count').textContent = `${stories.length} stories`;
     $('active-filters').hidden = !activeFilters;
     $('active-filter-text').textContent = activeFilters ? `Filtered by ${activeFilterLabels.join(' · ')}.` : '';
 
@@ -273,6 +274,10 @@
   }
 
   $('open-book').addEventListener('click', () => openReader());
+  $('read-featured')?.addEventListener('click', () => {
+    const featuredIndex = stories.findIndex((story) => story.id === 'anansi-wisdom');
+    if (featuredIndex >= 0) openReader(featuredIndex);
+  });
   $('cover-stage').addEventListener('click', () => openReader());
   document.querySelectorAll('#region-index [data-region]').forEach((button) => {
     button.addEventListener('click', () => {
