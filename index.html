@@ -45,12 +45,27 @@
         <h1 id="hero-title"><span>Every culture leaves</span><em>behind a story.</em></h1>
         <p class="intro">A collection of traditional tales from across the world, retold for curious young readers. Step into stories carried across generations, borders, and firesides.</p>
         <button id="open-book" class="primary" type="button" aria-controls="reader">Explore the collection</button>
-        <p class="note"><span id="hero-story-count">112 stories</span> · Five cultural regions and countless ways to wonder.</p>
+        <p class="note"><span id="hero-story-count">112 stories</span> · Traditional tales, thoughtfully retold.</p>
       </div>
-      <button class="cover-stage" id="cover-stage" type="button" aria-controls="reader">
-        <img src="cover.svg" width="600" height="820" alt="" fetchpriority="high">
-        <span class="cover-hint">Open the illustrated cover</span>
-      </button>
+      <div class="hero-art" aria-label="A child reads beneath an old tree while a fox rests nearby">
+        <img src="hero-illustration.svg" width="760" height="700" alt="A child reading beneath a broad old tree, with a fox nearby and a distant storybook castle." fetchpriority="high">
+        <span class="art-caption">A world of wonder, gathered in one place</span>
+      </div>
+    </section>
+
+    <section class="featured-story" aria-labelledby="featured-title">
+      <div class="featured-art">
+        <img src="assets/anansi-wisdom.webp" alt="Anansi the spider climbs a tree with a pot of wisdom." loading="lazy">
+        <span class="image-folio">TALE NO. 001</span>
+      </div>
+      <div class="featured-copy">
+        <p class="section-label">A STORY TO BEGIN WITH</p>
+        <p class="feature-kicker">FROM GHANA · AKAN TRADITIONS</p>
+        <h2 id="featured-title">Anansi and the Pot of Wisdom</h2>
+        <p>Anansi gathers all the world's wisdom into one pot, hoping to keep it for himself. But a small suggestion from his son teaches him something he never expected.</p>
+        <button class="feature-link" id="read-featured" type="button">Read this story <span aria-hidden="true">↗</span></button>
+      </div>
+      <span class="feature-side-note" aria-hidden="true">STORY OF THE WEEK</span>
     </section>
 
     <section id="reader" class="reader hidden" aria-labelledby="reader-title">
@@ -80,9 +95,9 @@
 
     <section id="regions" class="regions-section" aria-labelledby="regions-title">
       <div class="regions-heading">
-        <p class="section-label">A world of stories</p>
-        <h2 id="regions-title">Choose a corner of the world.</h2>
-        <p>Each place carries its own collection of wonders.</p>
+        <p class="section-label">FIVE REGIONS · MANY VOICES</p>
+        <h2 id="regions-title">A world between the covers.</h2>
+        <p>Follow a story across continents, landscapes and generations.</p>
       </div>
       <div class="region-index" id="region-index">
         <button type="button" data-region="Africa"><span class="region-number">01</span><span class="region-name">Africa</span><span class="region-arrow" aria-hidden="true">↗</span></button>
@@ -101,7 +116,7 @@
         </div>
         <span id="story-count" class="story-count" role="status" aria-live="polite" aria-atomic="true">12 stories</span>
       </div>
-      <p class="section-intro">Choose a tale below, or open the book and browse its contents. The library will grow as new stories are added.</p>
+      <p class="section-intro">From familiar fables to stories you may be meeting for the first time. Search by title, place or theme, and find your next journey.</p>
 
       <div class="filters" role="search">
         <div class="filter-field search-field">
