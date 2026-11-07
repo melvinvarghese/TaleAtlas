@@ -31,7 +31,25 @@
   };
   const hasNoHorizontalOverflow = () => document.documentElement.scrollWidth <= document.documentElement.clientWidth;
 
-  check('production page renders all 112 stories', () => equal(cardCount(), 112, 'card count'));
+  check('the 301-story collection is reachable across 16 correctly ordered pages', () => {
+    const pageCount = 16;
+    const indexes = [];
+    for (let page = 1; page <= pageCount; page += 1) {
+      const start = (page - 1) * 20;
+      const end = Math.min(start + 20, 301);
+      equal(document.getElementById('collection-page-status').textContent,
+        `Page ${page} of ${pageCount} · Showing ${start + 1}–${end} of 301`, 'collection page status');
+      const visibleIndexes = [...document.querySelectorAll('#story-grid [data-read]')]
+        .map((button) => Number(button.dataset.read));
+      equal(visibleIndexes.length, end - start, 'visible story count');
+      indexes.push(...visibleIndexes);
+      if (page < pageCount) document.getElementById('collection-next').click();
+    }
+    equal(indexes.join(','), Array.from({ length: 301 }, (_, index) => index).join(','), 'story order across pages');
+    if (!document.getElementById('collection-next').disabled) throw new Error('last collection page still has a next page');
+    while (!document.getElementById('collection-prev').disabled) document.getElementById('collection-prev').click();
+    equal(document.getElementById('collection-page-status').textContent, 'Page 1 of 16 · Showing 1–20 of 301', 'collection reset to first page');
+  });
   check('artwork captions and notes links are absent from the page', () => {
     if (document.querySelector('.story-art figcaption, .page-artwork figcaption, .footer-source-link')) {
       throw new Error('visible artwork captions or notes links remain');
@@ -39,7 +57,7 @@
   });
   check('the 12 existing illustrations stay local, described, and reused in the reader', () => {
     const cards = [...document.querySelectorAll('#story-grid .story-card')];
-    equal(cards.length, 112, 'story card count');
+    equal(cards.length, 20, 'visible story card count');
     for (const [index, card] of cards.slice(0, 12).entries()) {
       const image = card.querySelector('.story-art img');
       if (!image?.getAttribute('alt')?.trim()) throw new Error(`card ${index} is missing descriptive alt text`);
@@ -76,10 +94,11 @@
     if (!hasNoHorizontalOverflow()) throw new Error(`page is ${document.documentElement.scrollWidth}px wide at ${document.documentElement.clientWidth}px`);
   });
 
-  setRegion('Asia');
-  check('region filter reports the 44 matching Asian stories', () => {
-    equal(cardCount(), 44, 'filtered card count');
-    equal(document.getElementById('story-count').textContent, '44 of 112 stories', 'visible story count');
+  setRegion('East Asia');
+  check('region filter reports the 62 matching East Asian stories', () => {
+    equal(cardCount(), 20, 'visible filtered card count');
+    equal(document.getElementById('story-count').textContent, '62 of 301 stories', 'filtered story count');
+    equal(document.getElementById('collection-page-status').textContent, 'Page 1 of 4 · Showing 1–20 of 62', 'filtered collection page status');
   });
 
   setSearch('Momotaro');
@@ -92,8 +111,8 @@
   setRegion('all');
   setSearch('Anansi');
   check('search narrows the library and announces its result count', () => {
-    equal(cardCount(), 1, 'search card count');
-    equal(document.getElementById('story-count').textContent, '1 of 112 stories', 'search count');
+    equal(cardCount(), 2, 'search card count');
+    equal(document.getElementById('story-count').textContent, '2 of 301 stories', 'search count');
   });
 
   setSearch('no such folktale');
@@ -111,8 +130,8 @@
       .find((button) => button.dataset.value === 'Europe');
     if (!europe) throw new Error('missing clickable Europe label');
     europe.click();
-    equal(cardCount(), 24, 'Europe card count');
-    equal(document.getElementById('story-count').textContent, '24 of 112 stories', 'region result count');
+    equal(cardCount(), 20, 'visible Europe card count');
+    equal(document.getElementById('story-count').textContent, '64 of 301 stories', 'region result count');
     equal(document.querySelector('#story-grid [data-filter="region"]')?.getAttribute('aria-pressed'), 'true', 'active region state');
   });
 
@@ -132,7 +151,7 @@
 
   check('clicking an active theme label toggles that theme filter off', () => {
     document.querySelector('#story-grid [data-filter="theme"]').click();
-    equal(cardCount(), 24, 'Europe stories after clearing theme');
+    equal(cardCount(), 20, 'visible Europe stories after clearing theme');
     equal(document.querySelector('#story-grid [data-filter="theme"]')?.getAttribute('aria-pressed'), 'false', 'cleared theme state');
   });
 
@@ -141,9 +160,9 @@
       .find((button) => button.dataset.value === 'Germany');
     if (!germany) throw new Error('missing clickable Germany label');
     germany.click();
-    equal(cardCount(), 3, 'Germany card count');
+    equal(cardCount(), 8, 'Germany card count');
     equal([...document.querySelectorAll('#story-grid h3')].map((heading) => heading.textContent).join('|'),
-      'The Bremen Town Musicians|The Magic Porridge Pot|The Fisherman and His Wife', 'Germany stories');
+      'The Bremen Town Musicians|The Magic Porridge Pot|The Fisherman and His Wife|Hans in Luck|Jorinda and Jorindel|The Queen Bee|The Golden Goose|The Elves and the Shoemaker', 'Germany stories');
   });
 
   check('clear filters resets metadata, search, and the existing region dropdown', () => {
@@ -153,7 +172,9 @@
     const clear = document.getElementById('clear-filters');
     if (!clear || clear.hidden) throw new Error('clear filters control is not visible');
     clear.click();
-    equal(cardCount(), 112, 'card count after clearing');
+    equal(cardCount(), 20, 'visible cards after clearing');
+    equal(document.getElementById('story-count').textContent, '301 stories', 'total story count after clearing');
+    equal(document.getElementById('collection-page-status').textContent, 'Page 1 of 16 · Showing 1–20 of 301', 'pagination after clearing');
     equal(search.value, '', 'search after clearing');
     equal(region.value, 'all', 'region dropdown after clearing');
     if (!document.getElementById('active-filters').hidden) throw new Error('active filter summary remains visible');
@@ -197,9 +218,9 @@
     if (!document.getElementById('reader').classList.contains('hidden')) throw new Error('reader is still open');
     equal(search.value, 'Germany', 'search after reader country filter');
     equal(region.value, 'Europe', 'region dropdown after reader country filter');
-    equal(cardCount(), 3, 'country-filtered story count');
+    equal(cardCount(), 8, 'country-filtered story count');
     const titles = [...document.querySelectorAll('#story-grid h3')].map((heading) => heading.textContent).join(' | ');
-    equal(titles, 'The Bremen Town Musicians | The Magic Porridge Pot | The Fisherman and His Wife', 'normalized country results');
+    equal(titles, 'The Bremen Town Musicians | The Magic Porridge Pot | The Fisherman and His Wife | Hans in Luck | Jorinda and Jorindel | The Queen Bee | The Golden Goose | The Elves and the Shoemaker', 'normalized country results');
     equal(document.activeElement.id, 'collection-title', 'focus after reader country filter');
     if (!document.getElementById('active-filter-text').textContent.includes('Country: Germany')) {
       throw new Error('reader country filter is not shown in the active summary');
@@ -221,7 +242,7 @@
   document.getElementById('clear-filters').click();
   document.getElementById('close-book').click();
 
-  const contentsButton = document.getElementById('contents-top');
+  const contentsButton = document.getElementById('open-book');
   contentsButton.focus();
   contentsButton.click();
   check('opening the reader moves focus to its heading', () => equal(document.activeElement.id, 'reader-title', 'focused element'));
@@ -252,7 +273,7 @@
   document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
   check('Escape closes the reader and restores focus to its opener', () => {
     if (!document.getElementById('reader').classList.contains('hidden')) throw new Error('reader is still open');
-    equal(document.activeElement.id, 'contents-top', 'restored focus target');
+    equal(document.activeElement.id, 'open-book', 'restored focus target');
   });
 
   let result = document.getElementById('test-result');

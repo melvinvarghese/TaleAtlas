@@ -74,48 +74,74 @@ function contentsHarness() {
         throw new Error(message);
       };
       try {
-        const pageFlipRequested = Boolean(document.querySelector('script[src*="page-flip"]'));
-        if (pageFlipRequested) await waitFor(() => window.St && window.St.PageFlip, 'PageFlip library did not load');
-        document.getElementById('contents-top').click();
-        await waitFor(() => document.querySelectorAll('.contents-list li').length === 112, 'Reader did not render all 112 contents entries');
-        if (pageFlipRequested) {
-          await waitFor(() => document.querySelector('#flipbook .stf__wrapper'), 'PageFlip did not initialize');
-          await delay(1200);
-          if (window.matchMedia('(max-width: 760px)').matches) {
-            result.dataset.status = 'skipped';
-            result.textContent = 'Legacy PageFlip mobile turning is not reliably controllable in Chromium --dump-dom.';
-            return;
+        const opener = document.getElementById('open-book');
+        if (!opener) throw new Error('Reader opener is missing');
+        opener.click();
+
+        const storyCount = 301;
+        const pageSize = 20;
+        const pageCount = Math.ceil(storyCount / pageSize);
+        await waitFor(() => document.querySelectorAll('.contents-list li').length === pageSize, 'Reader did not render the first 20 contents entries');
+        const allIndexes = [];
+        const pageMetrics = [];
+
+        for (let pageNumber = 1; pageNumber <= pageCount; pageNumber += 1) {
+          const start = (pageNumber - 1) * pageSize;
+          const end = Math.min(start + pageSize, storyCount);
+          const expectedCounter = 'Contents ' + (start + 1) + '–' + end + ' of ' + storyCount;
+          await waitFor(() => document.getElementById('page-counter').textContent === expectedCounter, 'Reader did not show ' + expectedCounter);
+
+          const list = document.querySelector('.contents-list');
+          const page = list.closest('.page-inner') || list.closest('.paper');
+          const book = document.querySelector('.book');
+          const pageRect = page.getBoundingClientRect();
+          const bookRect = book.getBoundingClientRect();
+          const entries = [...list.querySelectorAll('li')];
+          const indexes = entries.map(entry => Number(entry.querySelector('[data-story]').dataset.story));
+          const fullyInside = entries.filter(entry => {
+            const rect = entry.getBoundingClientRect();
+            return rect.width > 0 && rect.height > 0 && rect.left >= pageRect.left && rect.right <= pageRect.right && rect.top >= pageRect.top && rect.bottom <= pageRect.bottom;
+          }).length;
+          const lastRect = entries.at(-1).getBoundingClientRect();
+          const expectedEntries = end - start;
+          const visible = entries.length === expectedEntries
+            && fullyInside === expectedEntries
+            && lastRect.bottom <= bookRect.bottom + 1
+            && indexes[0] === start
+            && indexes.at(-1) === end - 1;
+
+          allIndexes.push(...indexes);
+          pageMetrics.push({ page: pageNumber, entries: entries.length, fullyInside, visible });
+          if (pageNumber < pageCount) {
+            document.getElementById('next').click();
+            const nextStart = end;
+            const nextEnd = Math.min(nextStart + pageSize, storyCount);
+            const nextCounter = 'Contents ' + (nextStart + 1) + '–' + nextEnd + ' of ' + storyCount;
+            await waitFor(() => document.getElementById('page-counter').textContent === nextCounter, 'Next did not show ' + nextCounter);
           }
-        } else {
-          await delay(300);
         }
-        const lists = [...document.querySelectorAll('.contents-list')];
-        const list = lists.sort((a, b) => {
-          const first = a.getBoundingClientRect();
-          const second = b.getBoundingClientRect();
-          return second.width * second.height - first.width * first.height;
-        })[0];
-        const page = list.closest('.page-inner') || list.closest('.paper');
-        const book = document.querySelector('#flipbook') || document.querySelector('.book');
-        const pageRect = page.getBoundingClientRect();
-        const bookRect = book.getBoundingClientRect();
-        const entries = [...list.querySelectorAll('li')];
-        const fullyInside = entries.filter(entry => {
-          const rect = entry.getBoundingClientRect();
-          return rect.width > 0 && rect.height > 0 && rect.left >= pageRect.left && rect.right <= pageRect.right && rect.top >= pageRect.top && rect.bottom <= pageRect.bottom;
-        }).length;
-        const lastRect = entries.at(-1).getBoundingClientRect();
+
+        const indexesAreOrdered = allIndexes.length === storyCount
+          && allIndexes.every((index, offset) => index === offset);
+        const lastCounter = 'Contents 301–301 of 301';
+        document.getElementById('next').click();
+        await waitFor(() => document.getElementById('reader-title').textContent === 'The Lion and the Mouse', 'Last contents page did not begin reading');
+        const beginReadingWorks = document.getElementById('page-counter').textContent === 'Story 1 of 301';
+        document.getElementById('prev').click();
+        await waitFor(() => document.getElementById('page-counter').textContent === lastCounter, 'Previous did not return to the last contents page');
+
         const metrics = {
           viewport: [window.innerWidth, window.innerHeight],
-          entries: entries.length,
-          fullyInsidePage: fullyInside,
-          pageHeight: Math.round(pageRect.height),
-          bookHeight: Math.round(bookRect.height),
-          lastEntryBottom: Math.round(lastRect.bottom),
-          bookBottom: Math.round(bookRect.bottom),
-          pageOverflow: getComputedStyle(page).overflowY
+          storyCount,
+          contentsPages: pageCount,
+          visitedEntries: allIndexes.length,
+          indexesAreOrdered,
+          visiblePages: pageMetrics.filter(page => page.visible).length,
+          lastPageCounter: lastCounter,
+          beginReadingWorks,
+          pageMetrics
         };
-        result.dataset.status = entries.length === 112 && fullyInside === 112 && lastRect.bottom <= bookRect.bottom + 1 ? 'passed' : 'failed';
+        result.dataset.status = indexesAreOrdered && pageMetrics.every(page => page.visible) && beginReadingWorks ? 'passed' : 'failed';
         result.textContent = JSON.stringify(metrics);
       } catch (error) {
         result.dataset.status = 'failed';
@@ -133,7 +159,7 @@ async function checkViewport(baseUrl, label, width, height) {
   return { label, status: match[1], details: match[2] };
 }
 
-test('all 112 contents entries and the book bottom remain visible on desktop and mobile', async () => {
+test('all 301 contents entries are visible across paginated book pages on desktop and mobile', async () => {
   const productionHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const { server, setTestHtml } = createServer();
   await new Promise((resolve, reject) => {

@@ -8,12 +8,13 @@ const vm = require('node:vm');
 const { test } = require('node:test');
 const root = path.resolve(__dirname, '..');
 
-test('the original 12 stories keep local illustrations and additions stay text-only', () => {
+test('the original 12 stories keep local illustrations and all additions stay text-only', () => {
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(root, 'stories.js'), 'utf8'), context);
   const stories = context.window.TALEATLAS_STORIES;
-  assert.equal(stories.length, 112);
-  assert.equal(stories.slice(12).length, 100);
+  assert.equal(stories.length, 301);
+  assert.equal(stories.slice(12, 112).length, 100);
+  assert.equal(stories.slice(112).length, 189);
   for (const story of stories.slice(0, 12)) {
     const imagePath = path.join(root, 'assets', `${story.id}.webp`);
     assert.ok(fs.existsSync(imagePath), `${story.id} is missing ${imagePath}`);

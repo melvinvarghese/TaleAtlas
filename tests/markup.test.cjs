@@ -8,10 +8,10 @@ const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 
 test('the current SEO title and description retain the canonical and Open Graph metadata', () => {
-  assert.match(html, /<title>TaleAtlas — The World Folktale Book<\/title>/);
+  assert.match(html, /<title>TaleAtlas — The World Folktale Collection<\/title>/);
   assert.match(html, /name="description" content="A growing illustrated library of child-friendly folktales from around the world\."/);
   assert.match(html, /<link rel="canonical" href="https:\/\/melvinvarghese\.github\.io\/TaleAtlas\/">/);
-  assert.match(html, /property="og:title" content="TaleAtlas — The World Folktale Book"/);
+  assert.match(html, /property="og:title" content="TaleAtlas — The World Folktale Collection"/);
   assert.match(html, /property="og:description" content="A growing illustrated library of child-friendly folktales from around the world\."/);
   assert.match(html, /property="og:image" content="https:\/\/melvinvarghese\.github\.io\/TaleAtlas\/cover\.svg"/);
 });
