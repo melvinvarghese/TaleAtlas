@@ -49,6 +49,23 @@
     }
   };
 
+  // Choose one of the collection's real illustrated tales for each page load.
+  function randomizeHeroArtwork() {
+    const heroImage = document.querySelector('.hero-main-art');
+    if (!heroImage) return;
+
+    const illustratedStories = stories.filter((story) => Object.hasOwn(artwork, story.id));
+    if (!illustratedStories.length) return;
+
+    const selected = illustratedStories[Math.floor(Math.random() * illustratedStories.length)];
+    heroImage.src = `assets/${selected.id}.webp`;
+    heroImage.alt = artwork[selected.id].alt;
+    const caption = document.querySelector('.art-caption');
+    if (caption) caption.textContent = `Illustration from ${selected.title}`;
+  }
+
+  randomizeHeroArtwork();
+
   let current = -1;
   let returnFocus = null;
   let turnTimer;
