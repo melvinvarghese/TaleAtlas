@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 700" role="img" aria-labelledby="title desc">
+<title id="title">A story beneath the old tree</title><desc id="desc">A child reading a book beneath a broad tree, with a fox nearby and a distant storybook castle.</desc>
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#e9dfcb"/><stop offset="1" stop-color="#f5eddd"/></linearGradient>
+ <linearGradient id="hill" x2="0" y2="1"><stop stop-color="#9caa7d"/><stop offset="1" stop-color="#687e5c"/></linearGradient>
+ <pattern id="grain" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="3" r=".7" fill="#6e6048" opacity=".16"/><circle cx="11" cy="12" r=".6" fill="#6e6048" opacity=".12"/></pattern>
+</defs>
+<rect x="24" y="18" width="712" height="664" rx="350" fill="#e9e1d1"/>
+<path d="M48 495 Q190 385 330 468 T710 440 V652 H48Z" fill="url(#hill)"/>
+<path d="M48 550 Q210 460 365 535 T710 500 V652 H48Z" fill="#87966e"/>
+<circle cx="585" cy="142" r="50" fill="#d7a66d" opacity=".55"/>
+<g fill="#f8f0dc" stroke="#6a654c" stroke-width="3" stroke-linejoin="round">
+ <path d="M538 392 V286 L582 246 L625 286 V392Z"/><path d="M562 392 V322 L582 302 L603 322 V392Z" fill="#b46c4c"/>
+ <path d="M526 290 L582 230 L638 290Z" fill="#9e6048"/><path d="M575 248 V208 H590 V248" fill="#6b7658"/>
+ <path d="M625 392 V330 L655 303 L684 330 V392Z"/><path d="M618 330 L655 290 L692 330Z" fill="#9e6048"/>
+</g>
+<g fill="#314c37" stroke="#263d2d" stroke-width="4">
+ <path d="M142 512 Q130 330 155 175 L198 175 Q185 335 213 512Z"/>
+ <path d="M170 236 Q58 220 82 119 Q111 48 198 101 Q238 22 312 80 Q383 121 333 213 Q294 280 170 236Z"/>
+ <path d="M166 175 Q94 130 124 87 Q158 53 207 103 Q258 38 302 85 Q340 129 278 182Z" fill="#486343"/>
+</g>
+<g fill="#c0b78c" opacity=".9"><path d="M80 180q20-28 39 0q-20 20-39 0"/><path d="M278 111q17-26 34 0q-17 18-34 0"/><path d="M220 207q18-25 35 0q-17 18-35 0"/></g>
+<!-- child -->
+<ellipse cx="367" cy="558" rx="126" ry="22" fill="#43543e" opacity=".2"/>
+<path d="M294 540 Q302 465 351 446 Q398 438 430 485 L451 551Z" fill="#b66d4f"/>
+<path d="M337 454 Q319 421 339 397 Q365 370 393 393 Q420 415 405 452Z" fill="#b87950"/>
+<path d="M337 409 Q334 369 370 360 Q404 363 409 402 Q390 384 371 388 Q353 393 337 409Z" fill="#3d3029"/>
+<path d="M350 427q6 4 12 0M383 427q6 4 12 0" stroke="#3b3028" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M344 472 Q368 458 393 474 L426 535 L323 535Z" fill="#d7a56d"/>
+<path d="M311 511 Q368 478 426 511 L447 551 H290Z" fill="#efe2c8" stroke="#806b4e" stroke-width="3"/>
+<path d="M368 505 Q367 477 382 472 Q398 475 400 505" fill="#b66d4f"/>
+<path d="M305 551 Q350 534 389 550" stroke="#9b6b4c" stroke-width="4" fill="none"/>
+<!-- fox -->
+<path d="M545 546 Q570 492 616 518 Q648 537 628 571 Q604 600 562 578Z" fill="#b96e45" stroke="#74462f" stroke-width="3"/>
+<path d="M562 532 L548 495 L581 514 L600 509 L624 487 L619 535" fill="#b96e45" stroke="#74462f" stroke-width="3"/>
+<path d="M552 499 L560 522 L575 513Z M609 509 L619 497 L616 523Z" fill="#f0d6b7"/>
+<path d="M621 557 Q675 531 684 574 Q667 607 630 580" fill="#f2e6d0" stroke="#74462f" stroke-width="3"/>
+<circle cx="589" cy="544" r="3.5" fill="#342d25"/><path d="M612 558l8 3-7 5" stroke="#342d25" stroke-width="3" fill="none"/>
+<g fill="#d5a76d"><path d="M111 310l7 16 16 7-16 7-7 16-7-16-16-7 16-7z"/><path d="M474 194l5 11 11 5-11 5-5 11-5-11-11-5 11-5z"/><circle cx="462" cy="328" r="4"/><circle cx="692" cy="235" r="3"/></g>
+<rect x="24" y="18" width="712" height="664" rx="350" fill="url(#grain)" opacity=".45"/>
+</svg>
