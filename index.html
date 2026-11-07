@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#243a2b">
+  <meta name="theme-color" content="#f5f0e5">
   <meta name="description" content="A growing illustrated library of child-friendly folktales from around the world.">
-  <title>TaleAtlas — The World Folktale Book</title>
+  <title>TaleAtlas — The World Folktale Collection</title>
   <link rel="canonical" href="https://melvinvarghese.github.io/TaleAtlas/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TaleAtlas">
-  <meta property="og:title" content="TaleAtlas — The World Folktale Book">
+  <meta property="og:title" content="TaleAtlas — The World Folktale Collection">
   <meta property="og:description" content="A growing illustrated library of child-friendly folktales from around the world.">
   <meta property="og:url" content="https://melvinvarghese.github.io/TaleAtlas/">
   <meta property="og:image" content="https://melvinvarghese.github.io/TaleAtlas/cover.svg">
@@ -31,19 +31,21 @@
       <span>TaleAtlas</span>
     </a>
     <nav aria-label="Main navigation">
-      <button id="contents-top" type="button" aria-controls="reader">Contents</button>
+      <a href="#collection-title">Stories</a>
+      <a href="#regions">Regions</a>
       <button id="about-button" type="button" aria-controls="about-dialog" aria-haspopup="dialog">About</button>
+      <button class="nav-search" type="button" id="search-top" aria-label="Go to story search">Search <span aria-hidden="true">⌕</span></button>
     </nav>
   </header>
 
   <main id="main-content" tabindex="-1">
     <section id="welcome" class="welcome" aria-labelledby="hero-title">
       <div class="welcome-copy">
-        <p class="hero-label">12 traditional tales · 5 regions</p>
-        <h1 id="hero-title"><span>Every culture has</span><em>a story to tell.</em></h1>
-        <p class="intro">Travel the world through tales people have shared for generations. Meet clever animals, brave heroes, magical surprises, and little lessons for big hearts.</p>
-        <button id="open-book" class="primary" type="button" aria-controls="reader">Open the storybook</button>
-        <p class="note">A growing collection of traditional stories, retold for young readers.</p>
+        <p class="hero-label"><span class="ornament" aria-hidden="true">✳</span> THE WORLD FOLKTALE COLLECTION</p>
+        <h1 id="hero-title"><span>Every culture leaves</span><em>behind a story.</em></h1>
+        <p class="intro">A collection of traditional tales from across the world, retold for curious young readers. Step into stories carried across generations, borders, and firesides.</p>
+        <button id="open-book" class="primary" type="button" aria-controls="reader">Explore the collection</button>
+        <p class="note"><span id="hero-story-count">112 stories</span> · Five cultural regions and countless ways to wonder.</p>
       </div>
       <button class="cover-stage" id="cover-stage" type="button" aria-controls="reader">
         <img src="cover.svg" width="600" height="820" alt="" fetchpriority="high">
@@ -76,11 +78,26 @@
       <p class="keyboard-hint">Use these buttons or the arrow keys to turn pages.</p>
     </section>
 
+    <section id="regions" class="regions-section" aria-labelledby="regions-title">
+      <div class="regions-heading">
+        <p class="section-label">A world of stories</p>
+        <h2 id="regions-title">Choose a corner of the world.</h2>
+        <p>Each place carries its own collection of wonders.</p>
+      </div>
+      <div class="region-index" id="region-index">
+        <button type="button" data-region="Africa"><span class="region-number">01</span><span class="region-name">Africa</span><span class="region-arrow" aria-hidden="true">↗</span></button>
+        <button type="button" data-region="South Asia"><span class="region-number">02</span><span class="region-name">South Asia</span><span class="region-arrow" aria-hidden="true">↗</span></button>
+        <button type="button" data-region="East Asia"><span class="region-number">03</span><span class="region-name">East Asia</span><span class="region-arrow" aria-hidden="true">↗</span></button>
+        <button type="button" data-region="Europe"><span class="region-number">04</span><span class="region-name">Europe</span><span class="region-arrow" aria-hidden="true">↗</span></button>
+        <button type="button" data-region="Ancient Greece"><span class="region-number">05</span><span class="region-name">Ancient Greece</span><span class="region-arrow" aria-hidden="true">↗</span></button>
+      </div>
+    </section>
+
     <section class="collection" aria-labelledby="collection-title">
       <div class="section-heading">
         <div>
-          <p class="section-label">The collection</p>
-          <h2 id="collection-title" tabindex="-1">Stories from every corner</h2>
+          <p class="section-label">THE STORY LIBRARY</p>
+          <h2 id="collection-title" tabindex="-1">Find a story to wander into.</h2>
         </div>
         <span id="story-count" class="story-count" role="status" aria-live="polite" aria-atomic="true">12 stories</span>
       </div>
@@ -102,7 +119,8 @@
           <select id="region-filter">
             <option value="all">All regions</option>
             <option value="Africa">Africa</option>
-            <option value="Asia">Asia</option>
+            <option value="South Asia">South Asia</option>
+            <option value="East Asia">East Asia</option>
             <option value="Europe">Europe</option>
             <option value="Ancient Greece">Ancient Greece</option>
           </select>
