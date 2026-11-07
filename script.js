@@ -75,7 +75,7 @@
     if ($('reader').classList.contains('hidden')) return;
     $('reader').classList.add('hidden');
     $('welcome').classList.remove('hidden');
-    const target = returnFocus && returnFocus.isConnected ? returnFocus : $('contents-top');
+    const target = returnFocus && returnFocus.isConnected ? returnFocus : $('brand-home');
     returnFocus = null;
     if (restoreFocus) {
       target.focus({ preventScroll: true });
@@ -211,13 +211,6 @@
     const total = stories.length;
     const heroCount = $('hero-story-count');
     if (heroCount) heroCount.textContent = `${total} stories`;
-    document.querySelectorAll('#region-index [data-region]').forEach((button) => {
-      button.addEventListener('click', () => {
-        $('region-filter').value = button.dataset.region;
-        renderCards();
-        scrollTo($('collection-title'));
-      });
-    });
     const query = $('search').value.trim().toLowerCase();
     const region = $('region-filter').value;
     const filtered = stories.map((story, index) => ({ ...story, index })).filter((story) => {
@@ -281,7 +274,14 @@
 
   $('open-book').addEventListener('click', () => openReader());
   $('cover-stage').addEventListener('click', () => openReader());
-  $('contents-top').addEventListener('click', () => openReader());
+  document.querySelectorAll('#region-index [data-region]').forEach((button) => {
+    button.addEventListener('click', () => {
+      $('region-filter').value = button.dataset.region;
+      renderCards();
+      scrollTo($('collection-title'));
+    });
+  });
+  $('search-top')?.addEventListener('click', () => { scrollTo($('search')); $('search').focus({ preventScroll: true }); });
   $('close-book').addEventListener('click', () => closeReader());
   $('brand-home').addEventListener('click', (event) => {
     event.preventDefault();
