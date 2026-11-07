@@ -77,7 +77,7 @@ function contentsHarness() {
         const pageFlipRequested = Boolean(document.querySelector('script[src*="page-flip"]'));
         if (pageFlipRequested) await waitFor(() => window.St && window.St.PageFlip, 'PageFlip library did not load');
         document.getElementById('contents-top').click();
-        await waitFor(() => document.querySelectorAll('.contents-list li').length === 12, 'Reader did not render all 12 contents entries');
+        await waitFor(() => document.querySelectorAll('.contents-list li').length === 112, 'Reader did not render all 112 contents entries');
         if (pageFlipRequested) {
           await waitFor(() => document.querySelector('#flipbook .stf__wrapper'), 'PageFlip did not initialize');
           await delay(1200);
@@ -115,7 +115,7 @@ function contentsHarness() {
           bookBottom: Math.round(bookRect.bottom),
           pageOverflow: getComputedStyle(page).overflowY
         };
-        result.dataset.status = entries.length === 12 && fullyInside === 12 && lastRect.bottom <= bookRect.bottom + 1 ? 'passed' : 'failed';
+        result.dataset.status = entries.length === 112 && fullyInside === 112 && lastRect.bottom <= bookRect.bottom + 1 ? 'passed' : 'failed';
         result.textContent = JSON.stringify(metrics);
       } catch (error) {
         result.dataset.status = 'failed';
@@ -133,7 +133,7 @@ async function checkViewport(baseUrl, label, width, height) {
   return { label, status: match[1], details: match[2] };
 }
 
-test('all 12 contents entries and the book bottom remain visible on desktop and mobile', async () => {
+test('all 112 contents entries and the book bottom remain visible on desktop and mobile', async () => {
   const productionHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const { server, setTestHtml } = createServer();
   await new Promise((resolve, reject) => {

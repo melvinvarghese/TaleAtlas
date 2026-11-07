@@ -31,16 +31,16 @@
   };
   const hasNoHorizontalOverflow = () => document.documentElement.scrollWidth <= document.documentElement.clientWidth;
 
-  check('production page renders all 12 stories', () => equal(cardCount(), 12, 'card count'));
+  check('production page renders all 112 stories', () => equal(cardCount(), 112, 'card count'));
   check('artwork captions and notes links are absent from the page', () => {
     if (document.querySelector('.story-art figcaption, .page-artwork figcaption, .footer-source-link')) {
       throw new Error('visible artwork captions or notes links remain');
     }
   });
-  check('all 12 story illustrations are local, described, and reused in the reader', () => {
+  check('the 12 existing illustrations stay local, described, and reused in the reader', () => {
     const cards = [...document.querySelectorAll('#story-grid .story-card')];
-    equal(cards.length, 12, 'story card count');
-    for (const [index, card] of cards.entries()) {
+    equal(cards.length, 112, 'story card count');
+    for (const [index, card] of cards.slice(0, 12).entries()) {
       const image = card.querySelector('.story-art img');
       if (!image?.getAttribute('alt')?.trim()) throw new Error(`card ${index} is missing descriptive alt text`);
       if (image.loading !== 'lazy') throw new Error(`card ${index} image is not lazy-loaded`);
@@ -58,6 +58,18 @@
       if (readerImage.closest('figure')?.querySelector('figcaption, a')) throw new Error(`reader story ${index} has a visible artwork caption or notes link`);
       document.getElementById('close-book').click();
     }
+    if (cards.slice(12).some((card) => card.querySelector('.story-art img'))) {
+      throw new Error('a text-only addition unexpectedly has artwork');
+    }
+  });
+  check('a text-only story opens with its source note and no illustration', () => {
+    const firstAdded = document.querySelectorAll('#story-grid .story-card')[12];
+    firstAdded.querySelector('[data-read]').click();
+    if (document.querySelector('#right-page .page-artwork img')) throw new Error('text-only story shows artwork');
+    if (!document.querySelector('#left-page .page-text p')?.textContent.trim()) throw new Error('first story page is empty');
+    if (!document.querySelector('#right-page .page-text p')?.textContent.trim()) throw new Error('second story page is empty');
+    if (!document.querySelector('#left-page .page-meta')?.textContent.includes(';')) throw new Error('source/version note is not visible in the reader');
+    document.getElementById('close-book').click();
   });
   check('the production homepage fits the narrow viewport without horizontal scrolling', () => {
     if (window.innerWidth > 700) throw new Error(`expected responsive viewport, got ${window.innerWidth}px`);
@@ -65,9 +77,9 @@
   });
 
   setRegion('Asia');
-  check('region filter reports the four matching Asian stories', () => {
-    equal(cardCount(), 4, 'filtered card count');
-    equal(document.getElementById('story-count').textContent, '4 of 12 stories', 'visible story count');
+  check('region filter reports the 44 matching Asian stories', () => {
+    equal(cardCount(), 44, 'filtered card count');
+    equal(document.getElementById('story-count').textContent, '44 of 112 stories', 'visible story count');
   });
 
   setSearch('Momotaro');
@@ -81,7 +93,7 @@
   setSearch('Anansi');
   check('search narrows the library and announces its result count', () => {
     equal(cardCount(), 1, 'search card count');
-    equal(document.getElementById('story-count').textContent, '1 of 12 stories', 'search count');
+    equal(document.getElementById('story-count').textContent, '1 of 112 stories', 'search count');
   });
 
   setSearch('no such folktale');
@@ -99,8 +111,8 @@
       .find((button) => button.dataset.value === 'Europe');
     if (!europe) throw new Error('missing clickable Europe label');
     europe.click();
-    equal(cardCount(), 4, 'Europe card count');
-    equal(document.getElementById('story-count').textContent, '4 of 12 stories', 'region result count');
+    equal(cardCount(), 24, 'Europe card count');
+    equal(document.getElementById('story-count').textContent, '24 of 112 stories', 'region result count');
     equal(document.querySelector('#story-grid [data-filter="region"]')?.getAttribute('aria-pressed'), 'true', 'active region state');
   });
 
@@ -120,7 +132,7 @@
 
   check('clicking an active theme label toggles that theme filter off', () => {
     document.querySelector('#story-grid [data-filter="theme"]').click();
-    equal(cardCount(), 4, 'Europe stories after clearing theme');
+    equal(cardCount(), 24, 'Europe stories after clearing theme');
     equal(document.querySelector('#story-grid [data-filter="theme"]')?.getAttribute('aria-pressed'), 'false', 'cleared theme state');
   });
 
@@ -141,7 +153,7 @@
     const clear = document.getElementById('clear-filters');
     if (!clear || clear.hidden) throw new Error('clear filters control is not visible');
     clear.click();
-    equal(cardCount(), 12, 'card count after clearing');
+    equal(cardCount(), 112, 'card count after clearing');
     equal(search.value, '', 'search after clearing');
     equal(region.value, 'all', 'region dropdown after clearing');
     if (!document.getElementById('active-filters').hidden) throw new Error('active filter summary remains visible');

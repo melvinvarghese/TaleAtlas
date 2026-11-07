@@ -8,14 +8,19 @@ const vm = require('node:vm');
 const { test } = require('node:test');
 const root = path.resolve(__dirname, '..');
 
-test('every story has a locally stored illustration file', () => {
+test('the original 12 stories keep local illustrations and additions stay text-only', () => {
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(root, 'stories.js'), 'utf8'), context);
   const stories = context.window.TALEATLAS_STORIES;
-  assert.equal(stories.length, 12);
-  for (const story of stories) {
+  assert.equal(stories.length, 112);
+  assert.equal(stories.slice(12).length, 100);
+  for (const story of stories.slice(0, 12)) {
     const imagePath = path.join(root, 'assets', `${story.id}.webp`);
     assert.ok(fs.existsSync(imagePath), `${story.id} is missing ${imagePath}`);
+  }
+  for (const story of stories.slice(12)) {
+    const imagePath = path.join(root, 'assets', `${story.id}.webp`);
+    assert.equal(fs.existsSync(imagePath), false, `${story.id} should not have an illustration yet`);
   }
 });
 
@@ -49,7 +54,7 @@ test('the production TaleAtlas page supports search, filters, reader, and keyboa
     const match = result.stdout.match(/<pre id="test-result" data-status="(passed|failed)">([\s\S]*?)<\/pre>/);
     assert.ok(match, `Chromium did not return the test result. Output: ${result.stdout.slice(-1200)}`);
     assert.equal(match[1], 'passed', match[2].replace(/&#10;/g, '\n'));
-    assert.match(match[2], /24 passed; 0 failed/);
+    assert.match(match[2], /25 passed; 0 failed/);
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }
