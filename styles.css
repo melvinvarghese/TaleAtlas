@@ -1496,3 +1496,13 @@ button,input,select{font-family:inherit}
 .region-card-meta{grid-template-columns:1fr;grid-template-rows:auto auto;justify-items:center;gap:0;padding:.05rem .4rem .35rem}
 .region-name{grid-column:1;grid-row:1}
 .region-count{grid-column:1;grid-row:2;color:#65543e;font: .9rem 'Crimson Pro',Georgia,serif}
+
+
+/* Collection pagination */
+.collection-pagination{display:flex;align-items:center;justify-content:center;gap:1.1rem;margin:2rem auto .5rem;padding:1rem 0;border-top:1px solid #cbb18b;color:#514737;font:1rem 'Crimson Pro',Georgia,serif}
+.collection-pagination[hidden]{display:none}
+.collection-pagination button{min-width:104px;padding:.55rem 1rem;border:1px solid #9c402a;border-radius:4px;background:#a33420;color:#fff5e4;font:600 1rem 'Crimson Pro',Georgia,serif;cursor:pointer}
+.collection-pagination button:hover:not(:disabled){background:#7f291b}
+.collection-pagination button:disabled{border-color:#c9b99f;background:#e9dfcf;color:#8c806e;cursor:not-allowed}
+#collection-page-status{font-variant-numeric:tabular-nums;text-align:center}
+@media(max-width:420px){.collection-pagination{gap:.55rem;font-size:.9rem}.collection-pagination button{min-width:82px;padding:.5rem .65rem}}
