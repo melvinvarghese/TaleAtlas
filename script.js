@@ -211,6 +211,11 @@
     const total = stories.length;
     const heroCount = $('hero-story-count');
     if (heroCount) heroCount.textContent = `${total} stories`;
+    document.querySelectorAll('[data-region-count]').forEach((count) => {
+      const regionName = count.dataset.regionCount;
+      const amount = stories.filter((story) => story.region === regionName).length;
+      count.textContent = `${amount} stories`;
+    });
     const query = $('search').value.trim().toLowerCase();
     const region = $('region-filter').value;
     const filtered = stories.map((story, index) => ({ ...story, index })).filter((story) => {
