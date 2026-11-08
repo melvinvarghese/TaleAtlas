@@ -1,10 +1,10 @@
-// Fills in reading times for stories that were added without hand-set values.
-// The 12 hand-prepared stories keep the times written in stories.js.
+// Display clean-ups for story records in stories.js. stories.js itself is not edited.
 // Loaded after stories.js and before script.js.
 (() => {
   const stories = window.TALEATLAS_STORIES || [];
 
-  // Hand-prepared stories whose reading times are kept exactly as written.
+  // 1. Reading times --------------------------------------------------------
+  // The 12 hand-prepared stories keep the times written in stories.js.
   const handSet = new Set([
     'lion-mouse', 'monkey-crocodile', 'momotaro', 'anansi-wisdom',
     'tortoise-hare', 'stone-soup', 'bremen-musicians', 'boy-wolf',
@@ -24,5 +24,19 @@
     const words = countWords(story.leftPage) + countWords(story.rightPage);
     const minutes = Math.max(1, Math.round(words / WORDS_PER_MINUTE));
     story.readingTime = `${minutes} min`;
+  });
+
+  // 2. Vague source phrases -------------------------------------------------
+  // Some later stories end their source note with filler such as
+  // "authorship uncertain", "version varies" or "community varies".
+  // Those phrases are hidden; real citations (author, book, year) are kept.
+  const vaguePhrase = /\s*[;,]?\s*(?:authors?(?:hip)?\s+(?:is\s+)?(?:unknown|uncertain|unclear)|(?:the\s+)?(?:community|communities|versions?|variants?|tellings?|details)\s+(?:also\s+)?(?:vary|varies|differ|differs))\b\.?/gi;
+
+  stories.forEach((story) => {
+    if (typeof story.country !== 'string') return;
+    story.country = story.country
+      .replace(vaguePhrase, '')
+      .replace(/[;,\s]+$/, '')
+      .trim();
   });
 })();
