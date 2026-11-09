@@ -55,10 +55,10 @@
       throw new Error('visible artwork captions or notes links remain');
     }
   });
-  check('the 12 existing illustrations stay local, described, and reused in the reader', () => {
+  check('the 20 first-page illustrations stay local, described, and reused in the reader', () => {
     const cards = [...document.querySelectorAll('#story-grid .story-card')];
     equal(cards.length, 20, 'visible story card count');
-    for (const [index, card] of cards.slice(0, 12).entries()) {
+    for (const [index, card] of cards.entries()) {
       const image = card.querySelector('.story-art img');
       if (!image?.getAttribute('alt')?.trim()) throw new Error(`card ${index} is missing descriptive alt text`);
       if (image.loading !== 'lazy') throw new Error(`card ${index} image is not lazy-loaded`);
@@ -76,17 +76,18 @@
       if (readerImage.closest('figure')?.querySelector('figcaption, a')) throw new Error(`reader story ${index} has a visible artwork caption or notes link`);
       document.getElementById('close-book').click();
     }
-    if (cards.slice(12).some((card) => card.querySelector('.story-art img'))) {
-      throw new Error('a text-only addition unexpectedly has artwork');
-    }
   });
   check('a text-only story opens with its source note and no illustration', () => {
-    const firstAdded = document.querySelectorAll('#story-grid .story-card')[12];
-    firstAdded.querySelector('[data-read]').click();
+    document.getElementById('open-book').click();
+    document.getElementById('next').click();
+    document.querySelector('#right-page [data-story="32"]').click();
     if (document.querySelector('#right-page .page-artwork img')) throw new Error('text-only story shows artwork');
     if (!document.querySelector('#left-page .page-text p')?.textContent.trim()) throw new Error('first story page is empty');
     if (!document.querySelector('#right-page .page-text p')?.textContent.trim()) throw new Error('second story page is empty');
     if (!document.querySelector('#left-page .page-meta')?.textContent.includes(';')) throw new Error('source/version note is not visible in the reader');
+    document.getElementById('close-book').click();
+    document.getElementById('open-book').click();
+    document.getElementById('prev').click();
     document.getElementById('close-book').click();
   });
   check('the production homepage fits the narrow viewport without horizontal scrolling', () => {

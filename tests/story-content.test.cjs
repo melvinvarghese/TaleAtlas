@@ -6,6 +6,28 @@ const vm = require('node:vm');
 const { test } = require('node:test');
 
 const root = path.resolve(__dirname, '..');
+const firstIllustratedBatch = [
+  'the-tortoise-with-a-pretty-daughter',
+  'the-kings-magic-drum',
+  'ituen-and-the-kings-wife',
+  'of-the-pretty-stranger-who-killed-the-king',
+  'the-disobedient-daughter-who-married-a-skull',
+  'the-king-who-married-the-cocks-daughter',
+  'concerning-the-woman-the-ape-and-the-child',
+  'the-fish-and-the-leopards-wife',
+  'why-the-worms-live-underneath-the-ground',
+  'why-the-sun-and-the-moon-live-in-the-sky',
+  'the-story-of-the-lightning-and-the-thunder',
+  'why-dead-people-are-buried',
+  'of-the-fat-woman-who-melted-away',
+  'the-king-and-the-ju-ju-tree',
+  'of-the-pretty-girl-and-the-seven-jealous-women',
+  'the-lucky-fisherman',
+  'the-orphan-boy-and-the-magic-stone',
+  'concerning-the-fate-of-essido-and-his-evil-companions',
+  'the-story-of-the-drummer-and-the-alligators',
+  'the-election-of-the-king-bird',
+];
 
 function loadStories() {
   const context = { window: {} };
@@ -25,7 +47,7 @@ function storyRecord(id) {
   return story;
 }
 
-test('the original 112 stories and first 100 additions remain unchanged and text-only', () => {
+test('the original 112 stories remain unchanged, with only stories 13–32 illustrated', () => {
   const stories = loadStories();
   const originalCollection = stories.slice(0, 112);
   const additions = stories.slice(12, 112);
@@ -59,7 +81,16 @@ test('the original 112 stories and first 100 additions remain unchanged and text
     }
     assert.match(story.country, /^[^;]+;\s*.{10,}$/, `${story.title} needs a short source/version note`);
     assert.ok(story.country.split(';').slice(1).join(';').trim().length <= 85, `${story.title} has an overlong source/version note`);
-    assert.equal(fs.existsSync(path.join(root, 'assets', `${story.id}.webp`)), false, `${story.id} must remain text-only`);
+    assert.equal(fs.existsSync(path.join(root, 'assets', `${story.id}.webp`)),
+      firstIllustratedBatch.includes(story.id), `${story.id} illustration status`);
+  }
+});
+
+test('the first illustrated batch is exactly stories 13–32 in collection order', () => {
+  const batch = loadStories().slice(12, 32).map(story => story.id);
+  assert.deepEqual(Array.from(batch), firstIllustratedBatch);
+  for (const id of firstIllustratedBatch) {
+    assert.ok(fs.existsSync(path.join(root, 'assets', `${id}.webp`)), `${id} is missing its illustration`);
   }
 });
 

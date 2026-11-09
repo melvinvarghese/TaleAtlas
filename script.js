@@ -46,6 +46,66 @@
     },
     'grateful-crane': {
       alt: 'A red-crowned white crane works at a wooden loom in a quiet snowy cottage.'
+    },
+    'the-tortoise-with-a-pretty-daughter': {
+      alt: 'Adet teaches a song to children in a Southern Nigerian palace courtyard as her father Tortoise watches.'
+    },
+    'the-kings-magic-drum': {
+      alt: 'Tortoise carries the king’s carved drum toward a village feast, with a fallen branch on the path.'
+    },
+    'ituen-and-the-kings-wife': {
+      alt: 'Ituen explains how to share market produce with Queen Attem at a village table.'
+    },
+    'of-the-pretty-stranger-who-killed-the-king': {
+      alt: 'A mysterious stranger stands in a palace courtyard at twilight as a canoe glides through distant creeks.'
+    },
+    'the-disobedient-daughter-who-married-a-skull': {
+      alt: 'Afiong meets a kindly elder as the traveler’s handsome appearance fades to a harmless skull-like face.'
+    },
+    'the-king-who-married-the-cocks-daughter': {
+      alt: 'Adia, an anthropomorphic hen, stands with her rooster father as the king apologizes and welcomes her back.'
+    },
+    'concerning-the-woman-the-ape-and-the-child': {
+      alt: 'A gentle ape returns a wooden rattle to a baby beneath a shade tree while the parents watch.'
+    },
+    'the-fish-and-the-leopards-wife': {
+      alt: 'A fish apologizes to a leopard woman and brings a fresh basket of fruit beside the river.'
+    },
+    'why-the-worms-live-underneath-the-ground': {
+      alt: 'Small worms slip beneath the earth as a line of ants passes while King Eyo watches.'
+    },
+    'why-the-sun-and-the-moon-live-in-the-sky': {
+      alt: 'The Sun and Moon rise above a crowded courtyard filled by their friend Water and his creatures.'
+    },
+    'the-story-of-the-lightning-and-the-thunder': {
+      alt: 'A young ram flashes among clouds while his ewe mother follows above a quiet town.'
+    },
+    'why-dead-people-are-buried': {
+      alt: 'A sheep stands beside a flower-marked patch of earth as a dog returns with a forgotten message.'
+    },
+    'of-the-fat-woman-who-melted-away': {
+      alt: 'A woman made of palm oil rises whole from a clay pot beneath a shade tree as her family welcomes her.'
+    },
+    'the-king-and-the-ju-ju-tree': {
+      alt: 'King Udo and his daughter listen beneath a Ju Ju tree whose roots protect a clear spring.'
+    },
+    'of-the-pretty-girl-and-the-seven-jealous-women': {
+      alt: 'A kind river guardian returns Akim safely to shore as her parents offer gifts and a small bird watches.'
+    },
+    'the-lucky-fisherman': {
+      alt: 'A fisherman sets woven fish baskets at a shaded river bend while neighbors watch and learn.'
+    },
+    'the-orphan-boy-and-the-magic-stone': {
+      alt: 'Ayong returns a glowing stone to an elderly woman by a stream as villagers gather at his welcoming home.'
+    },
+    'concerning-the-fate-of-essido-and-his-evil-companions': {
+      alt: 'Brothers Eyo and Essido work together at a riverside stall selling yams and fish.'
+    },
+    'the-story-of-the-drummer-and-the-alligators': {
+      alt: 'Edet plays his drum at a riverside celebration beside his mother and guide, with calm alligators in the distance.'
+    },
+    'the-election-of-the-king-bird': {
+      alt: 'A black-and-white fishing eagle perches above a peaceful assembly of birds and a king by the river.'
     }
   };
 
