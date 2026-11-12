@@ -106,6 +106,66 @@
     },
     'the-election-of-the-king-bird': {
       alt: 'A black-and-white fishing eagle perches above a peaceful assembly of birds and a king by the river.'
+    },
+    'the-wolf-and-the-lamb': {
+      alt: 'A shepherd leads a small lamb safely away from a gray wolf beside a clear stream in the Greek hills.'
+    },
+    'the-ass-and-the-grasshopper': {
+      alt: 'An ass listens to grasshoppers singing among dew-covered meadow grasses in a sunlit Greek field.'
+    },
+    'the-wolf-and-the-crane': {
+      alt: 'A long-beaked crane lifts a bone from a wolf’s open mouth beside an olive grove.'
+    },
+    'the-father-and-his-sons': {
+      alt: 'A Greek father shows his three sons how a tied bundle of slender sticks resists bending.'
+    },
+    'the-bat-and-the-weasels': {
+      alt: 'A small brown bat calmly speaks with two weasels at separate paths beneath an olive tree at twilight.'
+    },
+    'the-cock-and-the-jewel': {
+      alt: 'A red-and-gold rooster compares a bright jewel with a grain of barley while his hens wait nearby.'
+    },
+    'the-swallow-and-the-crow': {
+      alt: 'A swallow and a crow share an olive branch as spring sunlight and a cool breeze pass over the garden.'
+    },
+    'the-dog-and-the-shadow': {
+      alt: 'A small dog peers into a clear stream from a stone bridge, holding bread as its reflection ripples below.'
+    },
+    'hercules-and-the-wagoner': {
+      alt: 'A wagoner braces his shoulder against a muddy wheel while oxen pull the cart and Hercules watches beside the lane.'
+    },
+    'the-mole-and-his-mother': {
+      alt: 'A young mole sniffs a fragrant sprig held by his mother beside their hillside burrow.'
+    },
+    'the-fawn-and-his-mother': {
+      alt: 'A young fawn stands close to his mother beneath an oak while a distant dog barks across the meadow.'
+    },
+    'the-ass-the-fox-and-the-lion': {
+      alt: 'A donkey brays on a country path as a surprised lion pauses and a fox lingers behind the olive trees.'
+    },
+    'the-flies-and-the-honey-pot': {
+      alt: 'A kitchen helper uses a leaf to lift flies from a spilled honey jar as the little insects rest on the plate.'
+    },
+    'the-farmer-and-the-snake': {
+      alt: 'A farmer guides a snake away from a warm stone with a long branch toward the sunny meadow grass.'
+    },
+    'the-man-and-the-lion': {
+      alt: 'A traveler and a lion study a stone statue of a man standing over a lion in a Greek forest clearing.'
+    },
+    'the-mountain-in-labor': {
+      alt: 'A tiny mouse peeks out from a mountain’s hillside while shepherds and villagers watch from a safe distance.'
+    },
+    'the-bear-and-the-fox': {
+      alt: 'A brown bear holds a low olive branch aside as a family carrying baskets passes, while a fox watches.'
+    },
+    'the-tortoise-and-the-eagle': {
+      alt: 'An eagle carries a tortoise high above rocky hills beneath wide clouds, with the tortoise held safely in flight.'
+    },
+    'the-fox-and-the-goat': {
+      alt: 'A shepherd lowers a rope and bucket into a stone well toward a goat in the water, as a fox hurries away along the path.'
+    },
+    'the-raven-and-the-swan': {
+      alt: 'A dark raven watches a white swan on the lake, then turns toward berries on the sunlit bank.'
     }
   };
 

@@ -8,7 +8,7 @@ const vm = require('node:vm');
 const { test } = require('node:test');
 const root = path.resolve(__dirname, '..');
 
-test('the original 12 stories and the approved next 20 stories keep local illustrations', () => {
+test('the original 12 stories and the approved next 40 stories keep local illustrations', () => {
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(root, 'stories.js'), 'utf8'), context);
   const stories = context.window.TALEATLAS_STORIES;
@@ -23,7 +23,11 @@ test('the original 12 stories and the approved next 20 stories keep local illust
     const imagePath = path.join(root, 'assets', `${story.id}.webp`);
     assert.ok(fs.existsSync(imagePath), `${story.id} is missing ${imagePath}`);
   }
-  for (const story of stories.slice(32)) {
+  for (const story of stories.slice(32, 52)) {
+    const imagePath = path.join(root, 'assets', `${story.id}.webp`);
+    assert.ok(fs.existsSync(imagePath), `${story.id} is missing ${imagePath}`);
+  }
+  for (const story of stories.slice(52)) {
     const imagePath = path.join(root, 'assets', `${story.id}.webp`);
     assert.equal(fs.existsSync(imagePath), false, `${story.id} should not have an illustration yet`);
   }
@@ -59,7 +63,7 @@ test('the production TaleAtlas page supports search, filters, reader, and keyboa
     const match = result.stdout.match(/<pre id="test-result" data-status="(passed|failed)">([\s\S]*?)<\/pre>/);
     assert.ok(match, `Chromium did not return the test result. Output: ${result.stdout.slice(-1200)}`);
     assert.equal(match[1], 'passed', match[2].replace(/&#10;/g, '\n'));
-    assert.match(match[2], /25 passed; 0 failed/);
+    assert.match(match[2], /26 passed; 0 failed/);
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }

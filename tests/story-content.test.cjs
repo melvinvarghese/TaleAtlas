@@ -28,6 +28,28 @@ const firstIllustratedBatch = [
   'the-story-of-the-drummer-and-the-alligators',
   'the-election-of-the-king-bird',
 ];
+const secondIllustratedBatch = [
+  'the-wolf-and-the-lamb',
+  'the-ass-and-the-grasshopper',
+  'the-wolf-and-the-crane',
+  'the-father-and-his-sons',
+  'the-bat-and-the-weasels',
+  'the-cock-and-the-jewel',
+  'the-swallow-and-the-crow',
+  'the-dog-and-the-shadow',
+  'hercules-and-the-wagoner',
+  'the-mole-and-his-mother',
+  'the-fawn-and-his-mother',
+  'the-ass-the-fox-and-the-lion',
+  'the-flies-and-the-honey-pot',
+  'the-farmer-and-the-snake',
+  'the-man-and-the-lion',
+  'the-mountain-in-labor',
+  'the-bear-and-the-fox',
+  'the-tortoise-and-the-eagle',
+  'the-fox-and-the-goat',
+  'the-raven-and-the-swan',
+];
 
 function loadStories() {
   const context = { window: {} };
@@ -47,10 +69,11 @@ function storyRecord(id) {
   return story;
 }
 
-test('the original 112 stories remain unchanged, with only stories 13–32 illustrated', () => {
+test('the original 112 stories remain unchanged, with stories 13–52 illustrated', () => {
   const stories = loadStories();
   const originalCollection = stories.slice(0, 112);
   const additions = stories.slice(12, 112);
+  const illustratedBatches = new Set([...firstIllustratedBatch, ...secondIllustratedBatch]);
   const expectedRegions = {
     Africa: 20,
     'Ancient Greece': 20,
@@ -82,7 +105,7 @@ test('the original 112 stories remain unchanged, with only stories 13–32 illus
     assert.match(story.country, /^[^;]+;\s*.{10,}$/, `${story.title} needs a short source/version note`);
     assert.ok(story.country.split(';').slice(1).join(';').trim().length <= 85, `${story.title} has an overlong source/version note`);
     assert.equal(fs.existsSync(path.join(root, 'assets', `${story.id}.webp`)),
-      firstIllustratedBatch.includes(story.id), `${story.id} illustration status`);
+      illustratedBatches.has(story.id), `${story.id} illustration status`);
   }
 });
 
@@ -90,6 +113,14 @@ test('the first illustrated batch is exactly stories 13–32 in collection order
   const batch = loadStories().slice(12, 32).map(story => story.id);
   assert.deepEqual(Array.from(batch), firstIllustratedBatch);
   for (const id of firstIllustratedBatch) {
+    assert.ok(fs.existsSync(path.join(root, 'assets', `${id}.webp`)), `${id} is missing its illustration`);
+  }
+});
+
+test('the second illustrated batch is exactly stories 33–52 in collection order', () => {
+  const batch = loadStories().slice(32, 52).map(story => story.id);
+  assert.deepEqual(Array.from(batch), secondIllustratedBatch);
+  for (const id of secondIllustratedBatch) {
     assert.ok(fs.existsSync(path.join(root, 'assets', `${id}.webp`)), `${id} is missing its illustration`);
   }
 });

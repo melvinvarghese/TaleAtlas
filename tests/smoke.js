@@ -77,6 +77,38 @@
       document.getElementById('close-book').click();
     }
   });
+  check('stories 33–52 render local illustrations with descriptive alt text in cards and the reader', () => {
+    const ids = [
+      'the-wolf-and-the-lamb', 'the-ass-and-the-grasshopper', 'the-wolf-and-the-crane',
+      'the-father-and-his-sons', 'the-bat-and-the-weasels', 'the-cock-and-the-jewel',
+      'the-swallow-and-the-crow', 'the-dog-and-the-shadow', 'hercules-and-the-wagoner',
+      'the-mole-and-his-mother', 'the-fawn-and-his-mother', 'the-ass-the-fox-and-the-lion',
+      'the-flies-and-the-honey-pot', 'the-farmer-and-the-snake', 'the-man-and-the-lion',
+      'the-mountain-in-labor', 'the-bear-and-the-fox', 'the-tortoise-and-the-eagle',
+      'the-fox-and-the-goat', 'the-raven-and-the-swan',
+    ];
+    for (const id of ids) {
+      const story = window.TALEATLAS_STORIES.find((candidate) => candidate.id === id);
+      if (!story) throw new Error(`missing story: ${id}`);
+      setSearch(story.title);
+      const card = document.querySelector('#story-grid .story-card');
+      const image = card?.querySelector('.story-art img');
+      if (!image) throw new Error(`${id} is missing its collection illustration`);
+      if (!image.getAttribute('alt')?.trim() || image.getAttribute('alt').length < 40) {
+        throw new Error(`${id} is missing descriptive alt text`);
+      }
+      equal(image.getAttribute('src'), `assets/${id}.webp`, `${id} collection image`);
+      if (card.querySelector('.story-art figcaption, .story-art a')) throw new Error(`${id} has a caption or artwork-notes link`);
+      card.querySelector('[data-read]').click();
+      const readerImage = document.querySelector('#right-page .page-artwork img');
+      if (!readerImage) throw new Error(`${id} is missing its reader illustration`);
+      equal(readerImage.getAttribute('src'), image.getAttribute('src'), `${id} reader image source`);
+      equal(readerImage.getAttribute('alt'), image.getAttribute('alt'), `${id} reader image alt text`);
+      if (readerImage.closest('figure')?.querySelector('figcaption, a')) throw new Error(`${id} has a reader caption or artwork-notes link`);
+      document.getElementById('close-book').click();
+    }
+    setSearch('');
+  });
   check('a text-only story opens with its source note and no illustration', () => {
     document.getElementById('open-book').click();
     document.getElementById('next').click();
