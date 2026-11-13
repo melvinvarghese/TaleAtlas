@@ -69,11 +69,13 @@ function storyRecord(id) {
   return story;
 }
 
-test('the original 112 stories remain unchanged, with stories 13–52 illustrated', () => {
+test('the original 112 stories remain unchanged and approved regional stories receive illustrations', () => {
   const stories = loadStories();
   const originalCollection = stories.slice(0, 112);
   const additions = stories.slice(12, 112);
-  const illustratedBatches = new Set([...firstIllustratedBatch, ...secondIllustratedBatch]);
+  const regionalIllustrations = ['South Asia', 'East Asia', 'Europe'].flatMap(region =>
+    stories.filter(story => story.region === region).slice(0, 20).map(story => story.id));
+  const illustratedBatches = new Set([...firstIllustratedBatch, ...secondIllustratedBatch, ...regionalIllustrations]);
   const expectedRegions = {
     Africa: 20,
     'Ancient Greece': 20,

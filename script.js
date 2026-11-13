@@ -47,6 +47,162 @@
     'grateful-crane': {
       alt: 'A red-crowned white crane works at a wooden loom in a quiet snowy cottage.'
     },
+    'how-the-rajas-son-won-the-princess-labam': {
+      alt: 'A young prince follows a green parrot toward Princess Labam’s shining palace as animals gather along the garden path.'
+    },
+    'the-lambikin': {
+      alt: 'A little white lamb reaches a cottage garden where an elderly woman welcomes it and woodland animals watch.'
+    },
+    punchkin: {
+      alt: 'A brave prince discovers a jeweled birdcage in a palace courtyard while a magician and royal family look on.'
+    },
+    'the-magic-fiddle': {
+      alt: 'A family listens together as a softly glowing bamboo fiddle brings Mira’s memory into their home.'
+    },
+    'loving-laili': {
+      alt: 'Prince Majnun meets fairy Laili beside a lotus lake while his loyal friend Husain stands nearby.'
+    },
+    'the-soothsayers-son': {
+      alt: 'Gangazara helps a bird and deer beside a village road as the grateful animals gather around him.'
+    },
+    harisarman: {
+      alt: 'Harisarman speaks honestly in a village courtyard while a ruler and neighbors listen with understanding.'
+    },
+    'the-charmed-ring': {
+      alt: 'A young merchant’s son finds his jeweled ring again with help from a bird, monkey, and small deer.'
+    },
+    'the-talkative-tortoise': {
+      alt: 'A tortoise grips a stick between two flying ducks above green hills on their journey to a mountain.'
+    },
+    'the-gold-giving-serpent': {
+      alt: 'A farmer’s family offers milk to a graceful golden serpent beside a single coin in the garden.'
+    },
+    'the-farmer-and-the-money-lender': {
+      alt: 'A farmer raises a carved conch that pours water into a village field as neighbors watch.'
+    },
+    'raja-rasalu': {
+      alt: 'Raja Rasalu returns from his journey to embrace his family beside a stone well and palace garden.'
+    },
+    'the-boy-who-had-a-moon-on-his-forehead-and-a-star-on-his-chin': {
+      alt: 'A young prince with a moon mark and star mark is recognized by his family in a palace garden.'
+    },
+    'the-demon-with-the-matted-hair': {
+      alt: 'A prince calmly untangles his weapons from a large demon’s knotted hair on a forest path.'
+    },
+    'lifes-secret': {
+      alt: 'A prince reveals a shining necklace and a magical fish beside a lotus pond to a worried loved one.'
+    },
+    'phakir-chand': {
+      alt: 'A clever young man uses a shining jewel to reunite two friends in a luminous underwater palace.'
+    },
+    'the-story-of-the-rakshasas': {
+      alt: 'A Brahman and his wife meet a lonely rakshasi in a glittering palace and begin to welcome her.'
+    },
+    'the-story-of-swet-basanta': {
+      alt: 'Two brothers reunite on a forest path beside a gentle elephant, a traveler, and a cheerful calf.'
+    },
+    'my-lord-bag-of-rice': {
+      alt: 'A Japanese archer stands beside a dragon king at a lake palace as a many-legged creature retreats.'
+    },
+    'the-tongue-cut-sparrow': {
+      alt: 'A kind woodcutter reunites with his sparrow friend in a bamboo grove among the bird’s family.'
+    },
+    'the-story-of-urashima-taro-the-fisher-lad': {
+      alt: 'Urashima Taro rides a sea turtle toward a glowing underwater palace filled with friendly sea folk.'
+    },
+    'the-farmer-and-the-badger': {
+      alt: 'A Japanese farmer shares fallen turnips with a small badger beside an autumn vegetable field.'
+    },
+    'the-adventures-of-kintaro-the-golden-boy': {
+      alt: 'Kintaro leads a playful, fair wrestling match with a bear, deer, monkey, and hare in a mountain clearing.'
+    },
+    'the-story-of-princess-hase': {
+      alt: 'Princess Hase and her loyal helper wait beneath a flowering tree as her father approaches through the woods.'
+    },
+    'the-story-of-the-man-who-did-not-wish-to-die': {
+      alt: 'Sentaro looks across the water from a peaceful enchanted island toward his distant home.'
+    },
+    'the-bamboo-cutter-and-the-moon-child': {
+      alt: 'The bamboo-cutter and his wife say goodbye as their daughter rises toward a moonlit procession.'
+    },
+    'the-mirror-of-matsuyama': {
+      alt: 'A Japanese daughter holds her mother’s round mirror as her father understands her affection.'
+    },
+    'the-goblin-of-adachigahara': {
+      alt: 'A pilgrim keeps watch with a lantern in a lonely cottage as dawn brightens the doorway.'
+    },
+    'womens-words-part-flesh-and-blood': {
+      alt: 'A Chinese farmer admires a tall millet sprout while his older brother watches from the field.'
+    },
+    'the-three-rhymsters': {
+      alt: 'A farmer and his clever wife turn a Chinese birthday feast rhyme contest into a joyful scene.'
+    },
+    'the-magic-cask': {
+      alt: 'A Chinese farmer offers a cap to his grandfather beside an old cask in the family home.'
+    },
+    'the-bird-with-nine-heads': {
+      alt: 'A shepherd helps a princess leave a cliffside cave as a nine-headed bird flies overhead.'
+    },
+    'the-great-flood': {
+      alt: 'A boy and his mother guide rescued animals and a traveler onto a wooden raft above floodwater.'
+    },
+    'the-herd-boy-and-the-weaving-maiden': {
+      alt: 'A herdboy and a weaving maiden meet across a shimmering river of stars beneath the night sky.'
+    },
+    'the-lady-of-the-moon': {
+      alt: 'Chang’e stands in a moonlit garden above Earth and looks gently toward the people she loves.'
+    },
+    'the-girl-with-the-horses-head-or-the-silkworm-goddess': {
+      alt: 'A young woman and her father stand with a white horse as their village gathers silk together.'
+    },
+    'per-gynt': {
+      alt: 'Per Gynt guides a muddled troll with a lantern beside a shepherd’s hut in the Norwegian mountains.'
+    },
+    'the-isle-of-udrost': {
+      alt: 'Fisherman Isaac approaches a hidden green island where new friends welcome his small boat.'
+    },
+    'the-three-lemons': {
+      alt: 'A traveler discovers three glowing lemons and three sisters in a sunlit European orchard.'
+    },
+    'the-neighbor-underground': {
+      alt: 'A farmer and a tiny underground neighbor discuss moving a stable beside a country cottage.'
+    },
+    'the-troll-wedding': {
+      alt: 'A clever dog helps a young herder recognize a troll wedding in a Norwegian mountain pasture.'
+    },
+    'the-hat-of-the-huldres': {
+      alt: 'An enchanted hat lies at a rustic wedding while puzzled guests look for the invisible farmhand.'
+    },
+    'the-magic-apples': {
+      alt: 'A young traveler helps a princess with comical silver horns in a palace garden.'
+    },
+    'east-of-the-sun-and-west-of-the-moon': {
+      alt: 'A brave girl rides a polar bear across snowy mountains toward an enchanted palace.'
+    },
+    'kari-woodencoat': {
+      alt: 'Princess Kari rides beside a friendly blue bull through an enchanted Nordic forest.'
+    },
+    'soria-moria-castle': {
+      alt: 'Halvor stands before a radiant Nordic castle with three princesses and a winding mountain path.'
+    },
+    'connla-and-the-fairy-maiden': {
+      alt: 'Connla and a fairy maiden sail toward a green island as his homeland fades behind them.'
+    },
+    guleesh: {
+      alt: 'Guleesh and a princess ride safely with the fairies above moonlit Irish hills and cottages.'
+    },
+    'the-field-of-boliauns': {
+      alt: 'Tom meets a small leprechaun among green boliaun plants beside a little pot of gold.'
+    },
+    'the-horned-women': {
+      alt: 'A wool-worker listens calmly to horned visitors beside a stone well in an Irish village.'
+    },
+    'conall-yellowclaw': {
+      alt: 'Conall and his three sons bring a fine brown horse home through the Irish countryside.'
+    },
+    'hudden-and-dudden-and-donald-oneary': {
+      alt: 'A poor Irish farmer shares a harvest meal with two neighbors around a rustic table.'
+    },
     'the-tortoise-with-a-pretty-daughter': {
       alt: 'Adet teaches a song to children in a Southern Nigerian palace courtyard as her father Tortoise watches.'
     },

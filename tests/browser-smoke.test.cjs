@@ -8,10 +8,12 @@ const vm = require('node:vm');
 const { test } = require('node:test');
 const root = path.resolve(__dirname, '..');
 
-test('the original 12 stories and the approved next 40 stories keep local illustrations', () => {
+test('the original 12 stories, next 40, and approved regional stories keep local illustrations', () => {
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(root, 'stories.js'), 'utf8'), context);
   const stories = context.window.TALEATLAS_STORIES;
+  const regionalIllustrations = new Set(['South Asia', 'East Asia', 'Europe'].flatMap(region =>
+    stories.filter(story => story.region === region).slice(0, 20).map(story => story.id)));
   assert.equal(stories.length, 301);
   assert.equal(stories.slice(12, 112).length, 100);
   assert.equal(stories.slice(112).length, 189);
@@ -29,7 +31,7 @@ test('the original 12 stories and the approved next 40 stories keep local illust
   }
   for (const story of stories.slice(52)) {
     const imagePath = path.join(root, 'assets', `${story.id}.webp`);
-    assert.equal(fs.existsSync(imagePath), false, `${story.id} should not have an illustration yet`);
+    assert.equal(fs.existsSync(imagePath), regionalIllustrations.has(story.id), `${story.id} illustration status`);
   }
 });
 
