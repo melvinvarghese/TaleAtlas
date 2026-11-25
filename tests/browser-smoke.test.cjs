@@ -17,6 +17,15 @@ test('the original 12 stories, next 40, and approved regional stories keep local
     'the-ghost-brahman', 'munachar-and-manachar', 'king-otoole-and-his-goose',
     'salmon-of-knowledge-fionn', 'the-brewery-of-eggshells',
     'how-we-got-the-name-spider-tales', 'the-squirrel-and-the-spider',
+    'the-leopard-and-the-ram', 'to-lose-an-elephant-for-the-sake-of-a-wren',
+    'farmer-mybrow-and-the-fairies', 'affair-of-the-hippopotamus-and-the-tortoise',
+    'how-the-tortoise-overcame-the-elephant-and-the-hippopotamus',
+    'the-story-of-the-fairy-bee', 'the-story-of-the-hippos', 'the-hare-and-the-lion-zanzibar',
+    'the-lion-the-hyena-and-the-rabbit-zanzibar', 'the-blacksmith-and-the-blackbirds',
+    'man-and-turtle-angola', 'elephant-and-frog-angola', 'jackal-and-hare-angola',
+    'squirrel-and-the-kingship', 'dog-and-the-kingship', 'dog-and-jackal-angola',
+    'the-story-of-the-frog-uganda', 'hare-earned-cow-and-chieftainship',
+    'the-man-who-knew-too-much', 'the-caterpillar-and-the-wild-animals',
   ]);
   const regionalIllustrations = new Set(['South Asia', 'East Asia', 'Europe'].flatMap(region =>
     stories.filter(story => story.region === region).slice(0, 20).map(story => story.id)));

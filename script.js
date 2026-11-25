@@ -352,6 +352,66 @@
     },
     'the-squirrel-and-the-spider': {
       alt: 'Squirrel looks on as Spider and his children carry harvest bundles while Crow claims one beside a woodland farm.'
+    },
+    'the-leopard-and-the-ram': {
+      alt: 'A ram builds a leafy shelter in a clearing while a wary leopard watches from the forest edge, mistaking the work for a threat.'
+    },
+    'to-lose-an-elephant-for-the-sake-of-a-wren': {
+      alt: 'Spider pauses beside a tiny wren as the elephant he won wanders away along a woodland path.'
+    },
+    'farmer-mybrow-and-the-fairies': {
+      alt: 'A farmer’s wife lifts a ripe yam as small fairies watch from the forest edge beside a flourishing field.'
+    },
+    'affair-of-the-hippopotamus-and-the-tortoise': {
+      alt: 'A tortoise listens from the riverside reeds as a hippopotamus and his wife pause on the path.'
+    },
+    'how-the-tortoise-overcame-the-elephant-and-the-hippopotamus': {
+      alt: 'A tortoise reveals his rope trick beside a palm tree as a hippo surfaces and an elephant watches.'
+    },
+    'the-story-of-the-fairy-bee': {
+      alt: 'A small bee guides Kintu across a Ugandan grassland toward a distant herd and his missing cow.'
+    },
+    'the-story-of-the-hippos': {
+      alt: 'A messenger crosses a broad river on a floating bridge of calm hippos after a storm.'
+    },
+    'the-hare-and-the-lion-zanzibar': {
+      alt: 'A quick hare perches above a hollow calabash tree as a lion watches the honey below.'
+    },
+    'the-lion-the-hyena-and-the-rabbit-zanzibar': {
+      alt: 'Rabbit, Lion, and Hyena share the harvest at their farm after making a fairer agreement.'
+    },
+    'the-blacksmith-and-the-blackbirds': {
+      alt: 'A turtle-dove witnesses blackbirds offering beeswax to a blacksmith to settle their debt.'
+    },
+    'man-and-turtle-angola': {
+      alt: 'A turtle swims happily into a river while people watch from the grassy bank.'
+    },
+    'elephant-and-frog-angola': {
+      alt: 'A frog rides on a calm elephant toward a village gathering as people greet them.'
+    },
+    'jackal-and-hare-angola': {
+      alt: 'A wide-eyed hare peeks from a burrow as a startled jackal hurries away through the bush.'
+    },
+    'squirrel-and-the-kingship': {
+      alt: 'An impatient squirrel waits beside an unfinished royal wrap as villagers prepare a modest ceremony.'
+    },
+    'dog-and-the-kingship': {
+      alt: 'A dog runs away carrying a piece of cooked chicken as musicians and guests look on during a village ceremony.'
+    },
+    'dog-and-jackal-angola': {
+      alt: 'A content dog enjoys a bowl of mush in a village while a jackal lingers beside the path.'
+    },
+    'the-story-of-the-frog-uganda': {
+      alt: 'A kind suitor steps carefully around a frog as a young woman watches from the garden shade.'
+    },
+    'hare-earned-cow-and-chieftainship': {
+      alt: 'A hare is welcomed as chief beside a living cow and a festive gathering of animals at a fenced yard.'
+    },
+    'the-man-who-knew-too-much': {
+      alt: 'A gardener rests in a plum garden and listens to his friend beside a fallen ripe plum.'
+    },
+    'the-caterpillar-and-the-wild-animals': {
+      alt: 'A tiny caterpillar faces a bold frog as an elephant, rhinoceros, jackal, and leopard watch nearby.'
     }
   };
 

@@ -80,6 +80,15 @@ test('the original 112 stories remain unchanged and approved regional stories re
     'the-ghost-brahman', 'munachar-and-manachar', 'king-otoole-and-his-goose',
     'salmon-of-knowledge-fionn', 'the-brewery-of-eggshells',
     'how-we-got-the-name-spider-tales', 'the-squirrel-and-the-spider',
+    'the-leopard-and-the-ram', 'to-lose-an-elephant-for-the-sake-of-a-wren',
+    'farmer-mybrow-and-the-fairies', 'affair-of-the-hippopotamus-and-the-tortoise',
+    'how-the-tortoise-overcame-the-elephant-and-the-hippopotamus',
+    'the-story-of-the-fairy-bee', 'the-story-of-the-hippos', 'the-hare-and-the-lion-zanzibar',
+    'the-lion-the-hyena-and-the-rabbit-zanzibar', 'the-blacksmith-and-the-blackbirds',
+    'man-and-turtle-angola', 'elephant-and-frog-angola', 'jackal-and-hare-angola',
+    'squirrel-and-the-kingship', 'dog-and-the-kingship', 'dog-and-jackal-angola',
+    'the-story-of-the-frog-uganda', 'hare-earned-cow-and-chieftainship',
+    'the-man-who-knew-too-much', 'the-caterpillar-and-the-wild-animals',
   ]);
   const illustratedBatches = new Set([
     ...firstIllustratedBatch, ...secondIllustratedBatch, ...regionalIllustrations, ...approvedAdditionalIllustrations,
@@ -135,7 +144,7 @@ test('the second illustrated batch is exactly stories 33–52 in collection orde
   }
 });
 
-test('189 new stories retain their approved content and only ten approved illustrations', () => {
+test('189 new stories retain their approved content and only thirty approved illustrations', () => {
   const stories = loadStories();
   const additions = stories.slice(112);
   const approvedAdditionalIllustrations = new Set([
@@ -143,6 +152,15 @@ test('189 new stories retain their approved content and only ten approved illust
     'the-ghost-brahman', 'munachar-and-manachar', 'king-otoole-and-his-goose',
     'salmon-of-knowledge-fionn', 'the-brewery-of-eggshells',
     'how-we-got-the-name-spider-tales', 'the-squirrel-and-the-spider',
+    'the-leopard-and-the-ram', 'to-lose-an-elephant-for-the-sake-of-a-wren',
+    'farmer-mybrow-and-the-fairies', 'affair-of-the-hippopotamus-and-the-tortoise',
+    'how-the-tortoise-overcame-the-elephant-and-the-hippopotamus',
+    'the-story-of-the-fairy-bee', 'the-story-of-the-hippos', 'the-hare-and-the-lion-zanzibar',
+    'the-lion-the-hyena-and-the-rabbit-zanzibar', 'the-blacksmith-and-the-blackbirds',
+    'man-and-turtle-angola', 'elephant-and-frog-angola', 'jackal-and-hare-angola',
+    'squirrel-and-the-kingship', 'dog-and-the-kingship', 'dog-and-jackal-angola',
+    'the-story-of-the-frog-uganda', 'hare-earned-cow-and-chieftainship',
+    'the-man-who-knew-too-much', 'the-caterpillar-and-the-wild-animals',
   ]);
   const expectedRegions = {
     Africa: 34,
