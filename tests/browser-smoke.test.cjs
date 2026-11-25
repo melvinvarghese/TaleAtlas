@@ -26,6 +26,16 @@ test('the original 12 stories, next 40, and approved regional stories keep local
     'squirrel-and-the-kingship', 'dog-and-the-kingship', 'dog-and-jackal-angola',
     'the-story-of-the-frog-uganda', 'hare-earned-cow-and-chieftainship',
     'the-man-who-knew-too-much', 'the-caterpillar-and-the-wild-animals',
+    'how-the-turtle-outwitted-the-pig', 'cunning-rabbit-and-his-well',
+    'the-lion-the-hyena-and-the-fox', 'the-elephant-and-the-rabbit-zanzibar',
+    'the-little-iron-house', 'the-past-and-the-future',
+    'morning-sunrise', 'the-story-of-the-animals-and-the-fruit',
+    'the-story-of-the-fairy-foxes', 'the-story-of-the-two-friends-uganda',
+    'the-cheats-of-kijongo', 'the-lioness-and-the-antelope',
+    'charcoal-burner-and-fuller', 'boy-hunting-locusts',
+    'fisherman-piping', 'pomegranate-apple-tree-bramble',
+    'dog-in-the-manger', 'oxen-and-axle-trees',
+    'boasting-traveler', 'boy-and-filberts',
   ]);
   const regionalIllustrations = new Set(['South Asia', 'East Asia', 'Europe'].flatMap(region =>
     stories.filter(story => story.region === region).slice(0, 20).map(story => story.id)));

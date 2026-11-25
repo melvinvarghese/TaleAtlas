@@ -89,6 +89,16 @@ test('the original 112 stories remain unchanged and approved regional stories re
     'squirrel-and-the-kingship', 'dog-and-the-kingship', 'dog-and-jackal-angola',
     'the-story-of-the-frog-uganda', 'hare-earned-cow-and-chieftainship',
     'the-man-who-knew-too-much', 'the-caterpillar-and-the-wild-animals',
+    'how-the-turtle-outwitted-the-pig', 'cunning-rabbit-and-his-well',
+    'the-lion-the-hyena-and-the-fox', 'the-elephant-and-the-rabbit-zanzibar',
+    'the-little-iron-house', 'the-past-and-the-future',
+    'morning-sunrise', 'the-story-of-the-animals-and-the-fruit',
+    'the-story-of-the-fairy-foxes', 'the-story-of-the-two-friends-uganda',
+    'the-cheats-of-kijongo', 'the-lioness-and-the-antelope',
+    'charcoal-burner-and-fuller', 'boy-hunting-locusts',
+    'fisherman-piping', 'pomegranate-apple-tree-bramble',
+    'dog-in-the-manger', 'oxen-and-axle-trees',
+    'boasting-traveler', 'boy-and-filberts',
   ]);
   const illustratedBatches = new Set([
     ...firstIllustratedBatch, ...secondIllustratedBatch, ...regionalIllustrations, ...approvedAdditionalIllustrations,
@@ -144,7 +154,7 @@ test('the second illustrated batch is exactly stories 33–52 in collection orde
   }
 });
 
-test('189 new stories retain their approved content and only thirty approved illustrations', () => {
+test('189 new stories retain their approved content and only fifty approved illustrations', () => {
   const stories = loadStories();
   const additions = stories.slice(112);
   const approvedAdditionalIllustrations = new Set([
@@ -161,6 +171,16 @@ test('189 new stories retain their approved content and only thirty approved ill
     'squirrel-and-the-kingship', 'dog-and-the-kingship', 'dog-and-jackal-angola',
     'the-story-of-the-frog-uganda', 'hare-earned-cow-and-chieftainship',
     'the-man-who-knew-too-much', 'the-caterpillar-and-the-wild-animals',
+    'how-the-turtle-outwitted-the-pig', 'cunning-rabbit-and-his-well',
+    'the-lion-the-hyena-and-the-fox', 'the-elephant-and-the-rabbit-zanzibar',
+    'the-little-iron-house', 'the-past-and-the-future',
+    'morning-sunrise', 'the-story-of-the-animals-and-the-fruit',
+    'the-story-of-the-fairy-foxes', 'the-story-of-the-two-friends-uganda',
+    'the-cheats-of-kijongo', 'the-lioness-and-the-antelope',
+    'charcoal-burner-and-fuller', 'boy-hunting-locusts',
+    'fisherman-piping', 'pomegranate-apple-tree-bramble',
+    'dog-in-the-manger', 'oxen-and-axle-trees',
+    'boasting-traveler', 'boy-and-filberts',
   ]);
   const expectedRegions = {
     Africa: 34,

@@ -412,6 +412,66 @@
     },
     'the-caterpillar-and-the-wild-animals': {
       alt: 'A tiny caterpillar faces a bold frog as an elephant, rhinoceros, jackal, and leopard watch nearby.'
+    },
+    'how-the-turtle-outwitted-the-pig': {
+      alt: 'Pig carries Turtle away, mistaking the quiet, stone-disguised turtle for a whetstone.'
+    },
+    'cunning-rabbit-and-his-well': {
+      alt: 'Rabbit shares water from a great cup as thirsty animals gather around the well after a drought.'
+    },
+    'the-lion-the-hyena-and-the-fox': {
+      alt: 'A quick fox escapes as a lion reaches after it across open ground in an Ethiopian landscape.'
+    },
+    'the-elephant-and-the-rabbit-zanzibar': {
+      alt: 'Rabbit slips away as his wax horns melt and Hyena notices him at Elephant’s dance.'
+    },
+    'the-little-iron-house': {
+      alt: 'The rabbit girl waits in the doorway of her small iron house as Rabbit approaches from the yard.'
+    },
+    'the-past-and-the-future': {
+      alt: 'An Angolan folktale judge explains his decision to two travelers listening before him.'
+    },
+    'morning-sunrise': {
+      alt: 'Thinker arrives solemnly at the family’s home, believing the young woman has died and coming to mourn.'
+    },
+    'the-story-of-the-animals-and-the-fruit': {
+      alt: 'Tortoise speaks beneath a tree as fruit falls and the gathered animals watch.'
+    },
+    'the-story-of-the-fairy-foxes': {
+      alt: 'A fairy fox calls in Mukono Forest, its wings made of soft, swirling night mist.'
+    },
+    'the-story-of-the-two-friends-uganda': {
+      alt: 'A hare listens kindly to a withdrawn boy in a quiet forest clearing at dusk.'
+    },
+    'the-cheats-of-kijongo': {
+      alt: 'Two market cheats open exchanged parcels and find rags and ant wings inside.'
+    },
+    'the-lioness-and-the-antelope': {
+      alt: 'A calm antelope greets a paused, ashamed lioness in an open grassy setting on Tanzania’s Swahili coast.'
+    },
+    'charcoal-burner-and-fuller': {
+      alt: 'A fuller politely declines a charcoal-burner’s invitation, holding a white cloth as they speak.'
+    },
+    'boy-hunting-locusts': {
+      alt: 'A boy pauses before a raised-tail scorpion, with the locusts he has caught gathered nearby.'
+    },
+    'fisherman-piping': {
+      alt: 'A smiling fisherman hauls a net of leaping fish from the water after stopping his flute playing.'
+    },
+    'pomegranate-apple-tree-bramble': {
+      alt: 'A bramble raises its stems to interrupt a pomegranate and apple-tree arguing nearby.'
+    },
+    'dog-in-the-manger': {
+      alt: 'A dog guards a manger full of hay while two oxen watch from beyond its reach.'
+    },
+    'oxen-and-axle-trees': {
+      alt: 'Oxen pull a loaded wagon along a country lane, glancing back toward its groaning axle-trees.'
+    },
+    'boasting-traveler': {
+      alt: 'A bystander gestures for the traveler to demonstrate his claimed long jump as listeners watch.'
+    },
+    'boy-and-filberts': {
+      alt: 'A boy draws his hand from a narrow pitcher with a small handful of filberts as a bystander watches.'
     }
   };
 

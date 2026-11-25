@@ -26,6 +26,12 @@ test('the page has a focusable skip target, named navigation, and live result st
   assert.match(html, /aria-controls="about-dialog" aria-haspopup="dialog"/);
 });
 
+test('the About dialog ends with the requested linked author credit', () => {
+  const about = html.match(/<dialog id="about-dialog"[^>]*>([\s\S]*?)<\/dialog>/);
+  assert.ok(about, 'About dialog exists');
+  assert.match(about[1], /<p>Made with ❤️ by <a href="https:\/\/melvinvarghese\.in\/\?utm_source=TaleAtlas">Melvin Varghese<\/a>\.<\/p>\s*$/);
+});
+
 test('keyboard focus and reduced-motion preferences are explicitly styled', () => {
   assert.match(css, /:focus-visible/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);

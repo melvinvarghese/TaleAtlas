@@ -20,6 +20,16 @@ const approvedAdditionalIllustrations = [
   'squirrel-and-the-kingship', 'dog-and-the-kingship', 'dog-and-jackal-angola',
   'the-story-of-the-frog-uganda', 'hare-earned-cow-and-chieftainship',
   'the-man-who-knew-too-much', 'the-caterpillar-and-the-wild-animals',
+  'how-the-turtle-outwitted-the-pig', 'cunning-rabbit-and-his-well',
+  'the-lion-the-hyena-and-the-fox', 'the-elephant-and-the-rabbit-zanzibar',
+  'the-little-iron-house', 'the-past-and-the-future',
+  'morning-sunrise', 'the-story-of-the-animals-and-the-fruit',
+  'the-story-of-the-fairy-foxes', 'the-story-of-the-two-friends-uganda',
+  'the-cheats-of-kijongo', 'the-lioness-and-the-antelope',
+  'charcoal-burner-and-fuller', 'boy-hunting-locusts',
+  'fisherman-piping', 'pomegranate-apple-tree-bramble',
+  'dog-in-the-manger', 'oxen-and-axle-trees',
+  'boasting-traveler', 'boy-and-filberts',
 ];
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'stories.js'), 'utf8'), context);
@@ -30,7 +40,7 @@ function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-test('regional first-20 art and only thirty approved additions have local art and descriptive alt text', () => {
+test('regional first-20 art and only fifty approved additions have local art and descriptive alt text', () => {
   for (const [region, quota] of Object.entries(quotas)) {
     const regionStories = stories.filter(story => story.region === region);
     const selected = regionStories.slice(0, quota);
