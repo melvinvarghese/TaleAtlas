@@ -12,6 +12,12 @@ test('the original 12 stories, next 40, and approved regional stories keep local
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(root, 'stories.js'), 'utf8'), context);
   const stories = context.window.TALEATLAS_STORIES;
+  const approvedAdditionalIllustrations = new Set([
+    'the-dragon-princess', 'the-frog-princess', 'the-evil-eye-of-sani',
+    'the-ghost-brahman', 'munachar-and-manachar', 'king-otoole-and-his-goose',
+    'salmon-of-knowledge-fionn', 'the-brewery-of-eggshells',
+    'how-we-got-the-name-spider-tales', 'the-squirrel-and-the-spider',
+  ]);
   const regionalIllustrations = new Set(['South Asia', 'East Asia', 'Europe'].flatMap(region =>
     stories.filter(story => story.region === region).slice(0, 20).map(story => story.id)));
   assert.equal(stories.length, 301);
@@ -31,7 +37,8 @@ test('the original 12 stories, next 40, and approved regional stories keep local
   }
   for (const story of stories.slice(52)) {
     const imagePath = path.join(root, 'assets', `${story.id}.webp`);
-    assert.equal(fs.existsSync(imagePath), regionalIllustrations.has(story.id), `${story.id} illustration status`);
+    const expectedIllustration = regionalIllustrations.has(story.id) || approvedAdditionalIllustrations.has(story.id);
+    assert.equal(fs.existsSync(imagePath), expectedIllustration, `${story.id} illustration status`);
   }
 });
 

@@ -322,6 +322,36 @@
     },
     'the-raven-and-the-swan': {
       alt: 'A dark raven watches a white swan on the lake, then turns toward berries on the sunlit bank.'
+    },
+    'the-dragon-princess': {
+      alt: 'Two messengers present jade gifts to the Dragon-Princess at her luminous castle gate, with a small dragon and shining pearls nearby.'
+    },
+    'the-frog-princess': {
+      alt: 'Sia apologizes to the Frog Princess beside the Yangtze River as her frog family gathers around their peaceful home.'
+    },
+    'the-evil-eye-of-sani': {
+      alt: 'Sribatsa and Chintamani reunite aboard a riverboat as evening light breaks through clouds above the green riverbank.'
+    },
+    'the-ghost-brahman': {
+      alt: 'A young cowherd presents a tiny glass bottle to reveal the ghostly double beside the real Brahman as their king watches.'
+    },
+    'munachar-and-manachar': {
+      alt: 'Munachar and Manachar share a cake beside raspberry bushes and full berry baskets in an Irish cottage garden.'
+    },
+    'king-otoole-and-his-goose': {
+      alt: 'King O’Toole and Kavin look on as the king’s restored white goose flies above a lake and green Irish hills.'
+    },
+    'salmon-of-knowledge-fionn': {
+      alt: 'Young Fionn carefully turns the Salmon of Knowledge over a hearth as the poet Finnegas returns with firewood.'
+    },
+    'the-brewery-of-eggshells': {
+      alt: 'A mother stirs a tiny eggshell pot by the hearth while one baby sits up with a surprisingly wise expression.'
+    },
+    'how-we-got-the-name-spider-tales': {
+      alt: 'Anansi meets Nyankupon beneath a broad tree, with a glimmering web and objects from the spider’s clever tasks nearby.'
+    },
+    'the-squirrel-and-the-spider': {
+      alt: 'Squirrel looks on as Spider and his children carry harvest bundles while Crow claims one beside a woodland farm.'
     }
   };
 

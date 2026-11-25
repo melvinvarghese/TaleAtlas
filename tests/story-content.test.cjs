@@ -75,7 +75,15 @@ test('the original 112 stories remain unchanged and approved regional stories re
   const additions = stories.slice(12, 112);
   const regionalIllustrations = ['South Asia', 'East Asia', 'Europe'].flatMap(region =>
     stories.filter(story => story.region === region).slice(0, 20).map(story => story.id));
-  const illustratedBatches = new Set([...firstIllustratedBatch, ...secondIllustratedBatch, ...regionalIllustrations]);
+  const approvedAdditionalIllustrations = new Set([
+    'the-dragon-princess', 'the-frog-princess', 'the-evil-eye-of-sani',
+    'the-ghost-brahman', 'munachar-and-manachar', 'king-otoole-and-his-goose',
+    'salmon-of-knowledge-fionn', 'the-brewery-of-eggshells',
+    'how-we-got-the-name-spider-tales', 'the-squirrel-and-the-spider',
+  ]);
+  const illustratedBatches = new Set([
+    ...firstIllustratedBatch, ...secondIllustratedBatch, ...regionalIllustrations, ...approvedAdditionalIllustrations,
+  ]);
   const expectedRegions = {
     Africa: 20,
     'Ancient Greece': 20,
@@ -127,9 +135,15 @@ test('the second illustrated batch is exactly stories 33–52 in collection orde
   }
 });
 
-test('189 new stories add the approved sourced, complete, text-only regional totals', () => {
+test('189 new stories retain their approved content and only ten approved illustrations', () => {
   const stories = loadStories();
   const additions = stories.slice(112);
+  const approvedAdditionalIllustrations = new Set([
+    'the-dragon-princess', 'the-frog-princess', 'the-evil-eye-of-sani',
+    'the-ghost-brahman', 'munachar-and-manachar', 'king-otoole-and-his-goose',
+    'salmon-of-knowledge-fionn', 'the-brewery-of-eggshells',
+    'how-we-got-the-name-spider-tales', 'the-squirrel-and-the-spider',
+  ]);
   const expectedRegions = {
     Africa: 34,
     'Ancient Greece': 40,
@@ -152,7 +166,8 @@ test('189 new stories add the approved sourced, complete, text-only regional tot
     }
     assert.match(story.country, /^[^;]+;\s*.{10,}$/, `${story.title} needs a short source/version note`);
     assert.ok(story.country.split(';').slice(1).join(';').trim().length <= 85, `${story.title} has an overlong source/version note`);
-    assert.equal(fs.existsSync(path.join(root, 'assets', `${story.id}.webp`)), false, `${story.id} must remain text-only`);
+    assert.equal(fs.existsSync(path.join(root, 'assets', `${story.id}.webp`)),
+      approvedAdditionalIllustrations.has(story.id), `${story.id} illustration status`);
   }
 });
 
