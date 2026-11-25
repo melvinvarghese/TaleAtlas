@@ -14,7 +14,13 @@ test('the original 12 stories, next 40, and approved regional stories keep local
   const stories = context.window.TALEATLAS_STORIES;
   const approvedAdditionalIllustrations = new Set([
     'the-dragon-princess', 'the-frog-princess', 'the-evil-eye-of-sani',
-    'the-ghost-brahman', 'munachar-and-manachar', 'king-otoole-and-his-goose',
+    'the-ghost-brahman',
+    'pride-goeth-before-a-fall', 'the-broken-pot', 'the-tiger-the-brahman-and-the-jackal', 'a-lesson-for-kings',
+    'how-the-wicked-sons-were-duped', 'the-indigent-brahman', 'the-bears-bad-bargain', 'the-jackal-and-the-iguana',
+    'the-sandy-road', 'the-story-of-chullaka-the-treasurer', 'the-measure-of-rice', 'the-banyan-deer',
+    'the-greedy-antelope', 'the-wily-antelope', 'the-dog-who-turned-preacher', 'the-elephant-and-the-dog',
+    'the-bull-who-won-the-bet', 'the-holy-quail', 'the-partridge-monkey-and-elephant', 'nanda-on-the-buried-gold',
+    'munachar-and-manachar', 'king-otoole-and-his-goose',
     'salmon-of-knowledge-fionn', 'the-brewery-of-eggshells',
     'how-we-got-the-name-spider-tales', 'the-squirrel-and-the-spider',
     'the-leopard-and-the-ram', 'to-lose-an-elephant-for-the-sake-of-a-wren',

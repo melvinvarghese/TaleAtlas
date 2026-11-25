@@ -154,12 +154,18 @@ test('the second illustrated batch is exactly stories 33–52 in collection orde
   }
 });
 
-test('189 new stories retain their approved content and only fifty approved illustrations', () => {
+test('189 new stories retain their approved content and only approved illustrations', () => {
   const stories = loadStories();
   const additions = stories.slice(112);
   const approvedAdditionalIllustrations = new Set([
     'the-dragon-princess', 'the-frog-princess', 'the-evil-eye-of-sani',
-    'the-ghost-brahman', 'munachar-and-manachar', 'king-otoole-and-his-goose',
+    'the-ghost-brahman',
+    'pride-goeth-before-a-fall', 'the-broken-pot', 'the-tiger-the-brahman-and-the-jackal', 'a-lesson-for-kings',
+    'how-the-wicked-sons-were-duped', 'the-indigent-brahman', 'the-bears-bad-bargain', 'the-jackal-and-the-iguana',
+    'the-sandy-road', 'the-story-of-chullaka-the-treasurer', 'the-measure-of-rice', 'the-banyan-deer',
+    'the-greedy-antelope', 'the-wily-antelope', 'the-dog-who-turned-preacher', 'the-elephant-and-the-dog',
+    'the-bull-who-won-the-bet', 'the-holy-quail', 'the-partridge-monkey-and-elephant', 'nanda-on-the-buried-gold',
+    'munachar-and-manachar', 'king-otoole-and-his-goose',
     'salmon-of-knowledge-fionn', 'the-brewery-of-eggshells',
     'how-we-got-the-name-spider-tales', 'the-squirrel-and-the-spider',
     'the-leopard-and-the-ram', 'to-lose-an-elephant-for-the-sake-of-a-wren',

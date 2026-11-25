@@ -263,6 +263,66 @@
     'the-election-of-the-king-bird': {
       alt: 'A black-and-white fishing eagle perches above a peaceful assembly of birds and a king by the river.'
     },
+    'pride-goeth-before-a-fall': {
+      alt: 'Ten fully clothed merchants work together to recover cloth from three safely restrained robbers on a forest path.'
+    },
+    'the-broken-pot': {
+      alt: 'A Bengali Brahman looks down at a broken earthen pot and scattered rice inside his humble home.'
+    },
+    'the-tiger-the-brahman-and-the-jackal': {
+      alt: 'A jackal shuts a tiger back inside a wooden cage while a relieved Brahman watches from the forest.'
+    },
+    'a-lesson-for-kings': {
+      alt: 'Two Indian kings step down from their chariots to courteously yield a narrow forest road.'
+    },
+    'how-the-wicked-sons-were-duped': {
+      alt: 'Two sons open sacks of stones and gravel in their family courtyard, finding no treasure.'
+    },
+    'the-indigent-brahman': {
+      alt: 'A poor Brahman shows mercy to a wealthy landholder as gentle spirits fade from an earthen pot.'
+    },
+    'the-bears-bad-bargain': {
+      alt: 'A black bear eats an orchard pear while a woodman and his wife share ripe fruit and a meal in their courtyard.'
+    },
+    'the-jackal-and-the-iguana': {
+      alt: 'A jackal wearing old shoes as ornaments boasts above a pile of bones while an iguana sings from a burrow.'
+    },
+    'the-sandy-road': {
+      alt: 'A caravan attendant breaks a buried stone and water springs from the sand as travelers gather.'
+    },
+    'the-story-of-chullaka-the-treasurer': {
+      alt: 'Chullaka weighs grain for a fair trade in an ancient Indian market.'
+    },
+    'the-measure-of-rice': {
+      alt: 'A wise valuer measures rice on a balance scale while a king watches from the court.'
+    },
+    'the-banyan-deer': {
+      alt: 'The Banyan Deer stands between a king and a pregnant doe as the king lowers his bow.'
+    },
+    'the-greedy-antelope': {
+      alt: 'A king releases an unharmed antelope from a loose rope near the forest edge.'
+    },
+    'the-wily-antelope': {
+      alt: 'An alert antelope notices a hunter’s hidden trap beside a tree and slips into tall grass.'
+    },
+    'the-dog-who-turned-preacher': {
+      alt: 'A dog holds a worn leather sandal before a seated king as attendants feed dogs in the palace courtyard.'
+    },
+    'the-elephant-and-the-dog': {
+      alt: 'A kneeling elephant gently greets his small dog friend as the king watches their reunion.'
+    },
+    'the-bull-who-won-the-bet': {
+      alt: 'A farmer apologizes to a friendly bull before it resumes pulling a wooden cart.'
+    },
+    'the-holy-quail': {
+      alt: 'A tiny quail stays safe in its nest as an orange forest fire curves around it.'
+    },
+    'the-partridge-monkey-and-elephant': {
+      alt: 'A partridge, monkey, and elephant gather beneath an old tree and listen to one another.'
+    },
+    'nanda-on-the-buried-gold': {
+      alt: 'Nanda and a wise adviser uncover family treasure as Nanda shares coins with neighbors.'
+    },
     'the-wolf-and-the-lamb': {
       alt: 'A shepherd leads a small lamb safely away from a gray wolf beside a clear stream in the Greek hills.'
     },
