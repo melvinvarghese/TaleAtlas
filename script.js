@@ -323,6 +323,51 @@
     'nanda-on-the-buried-gold': {
       alt: 'Nanda and a wise adviser uncover family treasure as Nanda shares coins with neighbors.'
     },
+    'the-speaking-horse': {
+      alt: 'A court scholar stands beside a calm horse as a king listens from a shaded palace pavilion.'
+    },
+    'concerning-a-man-and-two-yakas': {
+      alt: 'A farmer and his wife receive baskets of grain from two shy yakā spirits at their forest-edge home.'
+    },
+    'the-jackal-and-the-turtle': {
+      alt: 'A turtle rides on a jackal’s back toward a pond, ready to slip into the water and escape.'
+    },
+    'the-grateful-jackal': {
+      alt: 'A grateful jackal carries a boy’s cloth to two workers while the boy waits safely in a clearing with a python nearby.'
+    },
+    'how-gourds-were-put-in-small-mouthed-pots': {
+      alt: 'A clever girl carefully places tiny gourd fruits into narrow-mouthed copper pots as the king watches.'
+    },
+    'the-story-of-the-two-liars': {
+      alt: 'Two boastful storytellers inspect a cloth bundle and discover tiny lice instead of imagined elephants.'
+    },
+    'the-frightened-yaka': {
+      alt: 'A young helper reminds a yakā that the queen is its mother as the spirit retreats from the palace.'
+    },
+    'how-the-sun-the-moon-and-the-wind-went-out-to-dinner': {
+      alt: 'The Moon saves food for the Star mother while the Sun and Wind return empty-handed from dinner.'
+    },
+    'how-the-cat-came-to-live-with-man': {
+      alt: 'Children gently stroke a small cat near their cottage as a tiger watches from the trees.'
+    },
+    'the-lost-book': {
+      alt: 'A Khasi elder and community gather beside a river with a water-damaged book and shared traditions.'
+    },
+    'the-merchant-of-seri': {
+      alt: 'An honest merchant offers his wares for an old woman’s gold bowl as a rival watches from the market.'
+    },
+    'the-girl-monkey-and-the-string-of-pearls': {
+      alt: 'A clever monkey holds the queen’s pearl necklace near a tree while a guard watches a glass-bead decoy.'
+    },
+    'the-three-fishes': {
+      alt: 'One fish splashes beside a fisherman’s net as two other fish escape through a loosened corner.'
+    },
+    'the-red-bud-tree': {
+      alt: 'A father points out the seasons of one tree to four princes as they compare what they saw.'
+    },
+    'the-hawks-and-their-friends': {
+      alt: 'A hawk family gathers with a kingfisher, turtle, and lion after they help drive hunters away.'
+    },
     'the-wolf-and-the-lamb': {
       alt: 'A shepherd leads a small lamb safely away from a gray wolf beside a clear stream in the Greek hills.'
     },
