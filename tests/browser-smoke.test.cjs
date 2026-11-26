@@ -45,6 +45,9 @@ test('the original 12 stories, next 40, and approved regional stories keep local
     'fisherman-piping', 'pomegranate-apple-tree-bramble',
     'dog-in-the-manger', 'oxen-and-axle-trees',
     'boasting-traveler', 'boy-and-filberts',
+    'belly-and-members', 'father-and-his-two-daughters', 'old-woman-and-wine-jar',
+    'rivers-and-the-sea', 'the-trees-and-the-axe', 'seaside-travelers',
+    'mercury-and-the-sculptor', 'oak-and-the-reeds', 'the-lamp', 'crow-and-the-pitcher',
   ]);
   const regionalIllustrations = new Set(['South Asia', 'East Asia', 'Europe'].flatMap(region =>
     stories.filter(story => story.region === region).slice(0, 20).map(story => story.id)));

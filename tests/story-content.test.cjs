@@ -190,6 +190,9 @@ test('189 new stories retain their approved content and only approved illustrati
     'fisherman-piping', 'pomegranate-apple-tree-bramble',
     'dog-in-the-manger', 'oxen-and-axle-trees',
     'boasting-traveler', 'boy-and-filberts',
+    'belly-and-members', 'father-and-his-two-daughters', 'old-woman-and-wine-jar',
+    'rivers-and-the-sea', 'the-trees-and-the-axe', 'seaside-travelers',
+    'mercury-and-the-sculptor', 'oak-and-the-reeds', 'the-lamp', 'crow-and-the-pitcher',
   ]);
   const expectedRegions = {
     Africa: 34,
@@ -215,6 +218,22 @@ test('189 new stories retain their approved content and only approved illustrati
     assert.ok(story.country.split(';').slice(1).join(';').trim().length <= 85, `${story.title} has an overlong source/version note`);
     assert.equal(fs.existsSync(path.join(root, 'assets', `${story.id}.webp`)),
       approvedAdditionalIllustrations.has(story.id), `${story.id} illustration status`);
+  }
+});
+
+test('the next ten missing stories in global order have local art and descriptive alt text', () => {
+  const nextTen = [
+    'belly-and-members', 'father-and-his-two-daughters', 'old-woman-and-wine-jar',
+    'rivers-and-the-sea', 'the-trees-and-the-axe', 'seaside-travelers',
+    'mercury-and-the-sculptor', 'oak-and-the-reeds', 'the-lamp', 'crow-and-the-pitcher',
+  ];
+  const appSource = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
+
+  for (const id of nextTen) {
+    assert.ok(fs.existsSync(path.join(root, 'assets', `${id}.webp`)), `${id} is missing its WebP illustration`);
+    const key = new RegExp(`(?:['\"])?${id}(?:['\"])?\\s*:\\s*\\{\\s*alt:\\s*'([^']+)'`, 's');
+    const match = appSource.match(key);
+    assert.ok(match && match[1].trim().length >= 40, `${id} needs descriptive alt text in script.js`);
   }
 });
 

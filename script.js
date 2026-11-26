@@ -577,6 +577,36 @@
     },
     'boy-and-filberts': {
       alt: 'A boy draws his hand from a narrow pitcher with a small handful of filberts as a bystander watches.'
+    },
+    'belly-and-members': {
+      alt: 'A seated, fully clothed figure with a rounded belly eats bread and a fig on a stone bench in a pale courtyard.'
+    },
+    'father-and-his-two-daughters': {
+      alt: 'A daughter gestures toward gathering rain clouds in a garden while her elderly father listens beside rows of vegetables.'
+    },
+    'old-woman-and-wine-jar': {
+      alt: 'An elderly woman sits on a stone ledge and smells an empty clay jar in a sunlit courtyard.'
+    },
+    'rivers-and-the-sea': {
+      alt: 'Two expressive freshwater streams meet a broad blue-green sea, where three face-like currents mingle beside a rocky shore.'
+    },
+    'the-trees-and-the-axe': {
+      alt: 'A large oak and a tall evergreen stand among felled trunks and stumps, with an axe lying in the forest foreground.'
+    },
+    'seaside-travelers': {
+      alt: 'Three travelers inspect a large tied bundle of sticks on a sandy beach beside a calm sea and rocky cliffs.'
+    },
+    'mercury-and-the-sculptor': {
+      alt: 'A sculptor gestures to three marble statues while a plainly dressed visitor faces them in a sunlit workshop.'
+    },
+    'oak-and-the-reeds': {
+      alt: 'A large uprooted oak lies beside a stream among tall reeds that remain rooted and bend in the passing wind.'
+    },
+    'the-lamp': {
+      alt: 'A man leans over a bronze oil lamp to relight its small flame with a taper beside a sunlit courtyard opening.'
+    },
+    'crow-and-the-pitcher': {
+      alt: 'A crow holds a small stone over an open terracotta pitcher, with water and several pebbles visible inside.'
     }
   };
 
