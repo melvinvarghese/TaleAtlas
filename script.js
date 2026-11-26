@@ -607,6 +607,66 @@
     },
     'crow-and-the-pitcher': {
       alt: 'A crow holds a small stone over an open terracotta pitcher, with water and several pebbles visible inside.'
+    },
+    'fox-and-the-grapes': {
+      alt: 'A hungry red fox leaps beneath ripe purple grapes hanging high from a trellis in a sunlit Greek vineyard.'
+    },
+    'peacock-and-juno': {
+      alt: 'Juno gestures toward a peacock’s brilliant fan of feathers as a nightingale sings from a nearby branch.'
+    },
+    'lark-and-her-young-ones': {
+      alt: 'A mother lark guides her young away from a wheat-field nest as the farmer begins the harvest himself.'
+    },
+    'town-mouse-and-country-mouse': {
+      alt: 'A country mouse hurries from a lavish dining table as a large human shadow passes across the room.'
+    },
+    'man-and-the-satyr': {
+      alt: 'A puzzled satyr watches a man blow on cold hands beside a bowl of hot food in a Greek home.'
+    },
+    'the-two-bags': {
+      alt: 'A Greek traveler carries one woven bag in front and another partly hidden behind their back.'
+    },
+    'travelers-and-the-plane-tree': {
+      alt: 'Two tired travelers rest beneath a broad plane tree while one gestures toward its fruitless branches.'
+    },
+    'gnat-and-the-bull': {
+      alt: 'A tiny gnat perches on a calm bull’s horn before flying away across a sunlit meadow.'
+    },
+    'crab-and-its-mother': {
+      alt: 'A mother crab tries to walk straight along the shore while her young crab watches closely.'
+    },
+    'two-pots': {
+      alt: 'A fragile clay pot floats downstream beside a sturdy brass pot, with a clear space between them.'
+    },
+    'traveler-and-his-dog': {
+      alt: 'A travel-ready dog waits beside a packed doorway while its traveler points impatiently toward the road.'
+    },
+    'kingdom-of-the-lion': {
+      alt: 'A gentle lion leads a peaceful gathering as a cautious hare stays near the edge of the animal circle.'
+    },
+    'the-fox-and-the-mask': {
+      alt: 'A curious red fox touches a handsome actor’s mask among costumes and props in a Greek theater room.'
+    },
+    'peasant-and-the-eagle': {
+      alt: 'An eagle tugs a peasant’s headscarf, drawing him safely away from a crumbling stone wall.'
+    },
+    'crow-and-the-raven': {
+      alt: 'A crow caws from a roadside tree as travelers pass, while a raven watches from a nearby branch.'
+    },
+    'fox-and-the-woodcutter': {
+      alt: 'A fox hides behind firewood as a woodcutter gestures toward its hiding place to a passing huntsman.'
+    },
+    'traveler-and-fortune': {
+      alt: 'Dame Fortune gently wakes a tired traveler resting too close to the edge of a deep stone well.'
+    },
+    'wolf-and-the-housedog': {
+      alt: 'A free wolf studies the collar and tether of a well-fed mastiff, then turns toward the open hills.'
+    },
+    'hen-and-the-swallow': {
+      alt: 'A swallow warns a hen beside a nest where tiny vipers have emerged, before any attack takes place.'
+    },
+    'ass-and-his-purchaser': {
+      alt: 'A new donkey joins the laziest animal at a straw-filled trough as its buyer looks on.'
     }
   };
 

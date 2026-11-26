@@ -193,6 +193,11 @@ test('189 new stories retain their approved content and only approved illustrati
     'belly-and-members', 'father-and-his-two-daughters', 'old-woman-and-wine-jar',
     'rivers-and-the-sea', 'the-trees-and-the-axe', 'seaside-travelers',
     'mercury-and-the-sculptor', 'oak-and-the-reeds', 'the-lamp', 'crow-and-the-pitcher',
+    'fox-and-the-grapes', 'peacock-and-juno', 'lark-and-her-young-ones', 'town-mouse-and-country-mouse',
+    'man-and-the-satyr', 'the-two-bags', 'travelers-and-the-plane-tree', 'gnat-and-the-bull',
+    'crab-and-its-mother', 'two-pots', 'traveler-and-his-dog', 'kingdom-of-the-lion',
+    'the-fox-and-the-mask', 'peasant-and-the-eagle', 'crow-and-the-raven', 'fox-and-the-woodcutter',
+    'traveler-and-fortune', 'wolf-and-the-housedog', 'hen-and-the-swallow', 'ass-and-his-purchaser',
   ]);
   const expectedRegions = {
     Africa: 34,
@@ -230,6 +235,25 @@ test('the next ten missing stories in global order have local art and descriptiv
   const appSource = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
 
   for (const id of nextTen) {
+    assert.ok(fs.existsSync(path.join(root, 'assets', `${id}.webp`)), `${id} is missing its WebP illustration`);
+    const key = new RegExp(`(?:['\"])?${id}(?:['\"])?\\s*:\\s*\\{\\s*alt:\\s*'([^']+)'`, 's');
+    const match = appSource.match(key);
+    assert.ok(match && match[1].trim().length >= 40, `${id} needs descriptive alt text in script.js`);
+  }
+});
+
+test('the next twenty stories in global order have local art and descriptive alt text', () => {
+  const nextTwenty = [
+    'fox-and-the-grapes', 'peacock-and-juno', 'lark-and-her-young-ones', 'town-mouse-and-country-mouse',
+    'man-and-the-satyr', 'the-two-bags', 'travelers-and-the-plane-tree', 'gnat-and-the-bull',
+    'crab-and-its-mother', 'two-pots', 'traveler-and-his-dog', 'kingdom-of-the-lion',
+    'the-fox-and-the-mask', 'peasant-and-the-eagle', 'crow-and-the-raven', 'fox-and-the-woodcutter',
+    'traveler-and-fortune', 'wolf-and-the-housedog', 'hen-and-the-swallow', 'ass-and-his-purchaser',
+  ];
+  const appSource = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
+
+  assert.deepEqual(Array.from(loadStories().slice(164, 184), story => story.id), nextTwenty);
+  for (const id of nextTwenty) {
     assert.ok(fs.existsSync(path.join(root, 'assets', `${id}.webp`)), `${id} is missing its WebP illustration`);
     const key = new RegExp(`(?:['\"])?${id}(?:['\"])?\\s*:\\s*\\{\\s*alt:\\s*'([^']+)'`, 's');
     const match = appSource.match(key);
