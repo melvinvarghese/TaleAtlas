@@ -39,6 +39,9 @@ const approvedAdditionalIllustrations = [
   'fisherman-piping', 'pomegranate-apple-tree-bramble',
   'dog-in-the-manger', 'oxen-and-axle-trees',
   'boasting-traveler', 'boy-and-filberts',
+  'how-the-moon-became-beautiful', 'the-fox-and-the-tiger', 'the-fox-and-the-raven',
+  'the-spirit-of-the-wu-lian-mountain', 'the-little-hunting-dog', 'the-miserly-farmer',
+  'the-wind-the-clouds-and-the-snow', 'the-fish-and-the-flowers',
 ];
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'stories.js'), 'utf8'), context);

@@ -667,6 +667,36 @@
     },
     'ass-and-his-purchaser': {
       alt: 'A new donkey joins the laziest animal at a straw-filled trough as its buyer looks on.'
+    },
+    'the-fishermen': {
+      alt: 'An old fisherman speaks calmly beside two disappointed companions as their net comes ashore holding sand, stones, and a few fish.'
+    },
+    'mice-in-council': {
+      alt: 'Mice gather around a tiny bell to plan a warning about a cat, but none volunteers to fasten it on.'
+    },
+    'how-the-moon-became-beautiful': {
+      alt: 'Tseh-N’io stands among moonlit blossoms as the Moon brightens above and spreads gentle light across the night sky.'
+    },
+    'the-fox-and-the-tiger': {
+      alt: 'A fox walks proudly ahead of a tiger along a forest path as nearby animals flee from the tiger behind him.'
+    },
+    'the-fox-and-the-raven': {
+      alt: 'A fox flatters a raven on a branch as the raven opens its beak and a piece of food falls toward the waiting fox.'
+    },
+    'the-spirit-of-the-wu-lian-mountain': {
+      alt: 'A golden-armored temple guardian confronts a mountain spirit as a priest helps a scholar climb down safely from a tower.'
+    },
+    'the-little-hunting-dog': {
+      alt: 'A scholar welcomes a tiny hunting dog left behind after miniature knights and falcons clear insects from his room.'
+    },
+    'the-miserly-farmer': {
+      alt: 'A monk shares pears beside a sudden fruit tree while the farmer watches from his cart in an East Asian village.'
+    },
+    'the-wind-the-clouds-and-the-snow': {
+      alt: 'The Sun shines as a gentle judge while Snow acknowledges help from the Wind and Clouds above a winter mountain.'
+    },
+    'the-fish-and-the-flowers': {
+      alt: 'Narcissus blossoms scent a warm fish house as carp complain beneath the flowers’ reflection.'
     }
   };
 

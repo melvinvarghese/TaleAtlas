@@ -53,6 +53,9 @@ test('the original 12 stories, next 40, and approved regional stories keep local
     'crab-and-its-mother', 'two-pots', 'traveler-and-his-dog', 'kingdom-of-the-lion',
     'the-fox-and-the-mask', 'peasant-and-the-eagle', 'crow-and-the-raven', 'fox-and-the-woodcutter',
     'traveler-and-fortune', 'wolf-and-the-housedog', 'hen-and-the-swallow', 'ass-and-his-purchaser',
+    'the-fishermen', 'mice-in-council', 'how-the-moon-became-beautiful', 'the-fox-and-the-tiger',
+    'the-fox-and-the-raven', 'the-spirit-of-the-wu-lian-mountain', 'the-little-hunting-dog',
+    'the-miserly-farmer', 'the-wind-the-clouds-and-the-snow', 'the-fish-and-the-flowers',
   ]);
   const regionalIllustrations = new Set(['South Asia', 'East Asia', 'Europe'].flatMap(region =>
     stories.filter(story => story.region === region).slice(0, 20).map(story => story.id)));

@@ -198,6 +198,9 @@ test('189 new stories retain their approved content and only approved illustrati
     'crab-and-its-mother', 'two-pots', 'traveler-and-his-dog', 'kingdom-of-the-lion',
     'the-fox-and-the-mask', 'peasant-and-the-eagle', 'crow-and-the-raven', 'fox-and-the-woodcutter',
     'traveler-and-fortune', 'wolf-and-the-housedog', 'hen-and-the-swallow', 'ass-and-his-purchaser',
+    'the-fishermen', 'mice-in-council', 'how-the-moon-became-beautiful', 'the-fox-and-the-tiger',
+    'the-fox-and-the-raven', 'the-spirit-of-the-wu-lian-mountain', 'the-little-hunting-dog',
+    'the-miserly-farmer', 'the-wind-the-clouds-and-the-snow', 'the-fish-and-the-flowers',
   ]);
   const expectedRegions = {
     Africa: 34,
@@ -254,6 +257,23 @@ test('the next twenty stories in global order have local art and descriptive alt
 
   assert.deepEqual(Array.from(loadStories().slice(164, 184), story => story.id), nextTwenty);
   for (const id of nextTwenty) {
+    assert.ok(fs.existsSync(path.join(root, 'assets', `${id}.webp`)), `${id} is missing its WebP illustration`);
+    const key = new RegExp(`(?:['\"])?${id}(?:['\"])?\\s*:\\s*\\{\\s*alt:\\s*'([^']+)'`, 's');
+    const match = appSource.match(key);
+    assert.ok(match && match[1].trim().length >= 40, `${id} needs descriptive alt text in script.js`);
+  }
+});
+
+test('stories 185–194 are the next ten illustrated stories in global order', () => {
+  const nextTen = [
+    'the-fishermen', 'mice-in-council', 'how-the-moon-became-beautiful', 'the-fox-and-the-tiger',
+    'the-fox-and-the-raven', 'the-spirit-of-the-wu-lian-mountain', 'the-little-hunting-dog',
+    'the-miserly-farmer', 'the-wind-the-clouds-and-the-snow', 'the-fish-and-the-flowers',
+  ];
+  const appSource = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
+
+  assert.deepEqual(Array.from(loadStories().slice(184, 194), story => story.id), nextTen);
+  for (const id of nextTen) {
     assert.ok(fs.existsSync(path.join(root, 'assets', `${id}.webp`)), `${id} is missing its WebP illustration`);
     const key = new RegExp(`(?:['\"])?${id}(?:['\"])?\\s*:\\s*\\{\\s*alt:\\s*'([^']+)'`, 's');
     const match = appSource.match(key);
