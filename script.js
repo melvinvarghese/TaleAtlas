@@ -697,6 +697,42 @@
     },
     'the-fish-and-the-flowers': {
       alt: 'Narcissus blossoms scent a warm fish house as carp complain beneath the flowers’ reflection.'
+    },
+    'the-hen-the-cat-and-the-birds': {
+      alt: 'A hen speaks to a cat beside a hanging cage of birds in a Chinese farmyard, with two kittens nearby.'
+    },
+    'a-bridegroom-for-miss-mole': {
+      alt: 'A mole father and his daughter study a towering stone statue while a small mole digs at its base in the Korean hills.'
+    },
+    'the-mirror-that-made-trouble': {
+      alt: 'A Korean family gathers around a hand mirror, smiling as they discover that the strange face in it is their own.'
+    },
+    'the-hang-the-money-up-tree': {
+      alt: 'A woman hangs coins on a pine branch as a startled farmer and a second robed figure approach along the path.'
+    },
+    'the-goddess-of-green-growing-things': {
+      alt: 'Amaterasu shares seeds in a rice field as farmers plant seedlings beneath mulberry leaves and a silkworm.'
+    },
+    'the-boy-and-the-spirits-of-things': {
+      alt: 'A father renews a wooden axe beside his resting son as soft leaf- and bird-shaped spirits gather in the doorway light.'
+    },
+    'the-laughing-dumpling': {
+      alt: 'A Japanese grandmother escapes an ogre’s kitchen holding a magic paddle as rice dumplings lead toward an open door.'
+    },
+    'how-it-was-settled-who-should-rule-the-world': {
+      alt: 'A clever fox calls toward the brightening sunrise as luminous spirits turn to face it above a northern coast.'
+    },
+    'the-two-foxes-the-mole-and-the-crows': {
+      alt: 'Two foxes, a mole, and several crows share berries beneath the trees beside leaf garments they have set aside.'
+    },
+    'the-kind-giver-and-the-grudging-giver': {
+      alt: 'A fisherman offers a fish to a raven while two puppies wait beside a woven basket at the lakeshore.'
+    },
+    'the-man-who-was-changed-into-a-fox': {
+      alt: 'A fox rests beneath an old oak as the shadow of a man returns around it in a gentle golden glow.'
+    },
+    'the-old-man-of-the-sea': {
+      alt: 'Two sailors in a small boat offer a blue garment to a curious sea creature as the swirling current subsides.'
     }
   };
 

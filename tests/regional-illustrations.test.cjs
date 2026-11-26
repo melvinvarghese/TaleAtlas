@@ -42,6 +42,11 @@ const approvedAdditionalIllustrations = [
   'how-the-moon-became-beautiful', 'the-fox-and-the-tiger', 'the-fox-and-the-raven',
   'the-spirit-of-the-wu-lian-mountain', 'the-little-hunting-dog', 'the-miserly-farmer',
   'the-wind-the-clouds-and-the-snow', 'the-fish-and-the-flowers',
+  'the-hen-the-cat-and-the-birds', 'a-bridegroom-for-miss-mole', 'the-mirror-that-made-trouble',
+  'the-hang-the-money-up-tree', 'the-goddess-of-green-growing-things', 'the-boy-and-the-spirits-of-things',
+  'the-laughing-dumpling', 'how-it-was-settled-who-should-rule-the-world',
+  'the-two-foxes-the-mole-and-the-crows', 'the-kind-giver-and-the-grudging-giver',
+  'the-man-who-was-changed-into-a-fox', 'the-old-man-of-the-sea',
 ];
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'stories.js'), 'utf8'), context);

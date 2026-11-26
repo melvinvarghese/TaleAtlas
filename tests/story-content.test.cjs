@@ -201,6 +201,11 @@ test('189 new stories retain their approved content and only approved illustrati
     'the-fishermen', 'mice-in-council', 'how-the-moon-became-beautiful', 'the-fox-and-the-tiger',
     'the-fox-and-the-raven', 'the-spirit-of-the-wu-lian-mountain', 'the-little-hunting-dog',
     'the-miserly-farmer', 'the-wind-the-clouds-and-the-snow', 'the-fish-and-the-flowers',
+    'the-hen-the-cat-and-the-birds', 'a-bridegroom-for-miss-mole', 'the-mirror-that-made-trouble',
+    'the-hang-the-money-up-tree', 'the-goddess-of-green-growing-things', 'the-boy-and-the-spirits-of-things',
+    'the-laughing-dumpling', 'how-it-was-settled-who-should-rule-the-world',
+    'the-two-foxes-the-mole-and-the-crows', 'the-kind-giver-and-the-grudging-giver',
+    'the-man-who-was-changed-into-a-fox', 'the-old-man-of-the-sea',
   ]);
   const expectedRegions = {
     Africa: 34,
@@ -274,6 +279,25 @@ test('stories 185–194 are the next ten illustrated stories in global order', (
 
   assert.deepEqual(Array.from(loadStories().slice(184, 194), story => story.id), nextTen);
   for (const id of nextTen) {
+    assert.ok(fs.existsSync(path.join(root, 'assets', `${id}.webp`)), `${id} is missing its WebP illustration`);
+    const key = new RegExp(`(?:['\"])?${id}(?:['\"])?\\s*:\\s*\\{\\s*alt:\\s*'([^']+)'`, 's');
+    const match = appSource.match(key);
+    assert.ok(match && match[1].trim().length >= 40, `${id} needs descriptive alt text in script.js`);
+  }
+});
+
+test('stories 195–206 are the next twelve illustrated stories in global order', () => {
+  const nextTwelve = [
+    'the-hen-the-cat-and-the-birds', 'a-bridegroom-for-miss-mole', 'the-mirror-that-made-trouble',
+    'the-hang-the-money-up-tree', 'the-goddess-of-green-growing-things', 'the-boy-and-the-spirits-of-things',
+    'the-laughing-dumpling', 'how-it-was-settled-who-should-rule-the-world',
+    'the-two-foxes-the-mole-and-the-crows', 'the-kind-giver-and-the-grudging-giver',
+    'the-man-who-was-changed-into-a-fox', 'the-old-man-of-the-sea',
+  ];
+  const appSource = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
+
+  assert.deepEqual(Array.from(loadStories().slice(194, 206), story => story.id), nextTwelve);
+  for (const id of nextTwelve) {
     assert.ok(fs.existsSync(path.join(root, 'assets', `${id}.webp`)), `${id} is missing its WebP illustration`);
     const key = new RegExp(`(?:['\"])?${id}(?:['\"])?\\s*:\\s*\\{\\s*alt:\\s*'([^']+)'`, 's');
     const match = appSource.match(key);
